@@ -1,0 +1,33 @@
+@use "sass:map";
+@import "./node_modules/bootstrap/scss/bootstrap";
+
+$theme-colors: (
+    "black": #242424,
+    "white": #fefefe,
+    "bone": #fafafa,
+    "gray":  #DCDCDC,
+    "dark-gray": #828282,
+    "light-blue": #52B2BF,
+    "blue": #00ac9e,
+    "navy-blue": #2832C2
+);
+
+#pic {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: 0px -40px;
+}
+
+#about-row {
+    padding: 100px 0px 100px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.socials svg {
+    margin: 0px 10px 0px;
+}

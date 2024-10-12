@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Matthew Bird</title>
+    <meta name="description" content="Matthew Bird Portfolio">
+    <meta name="keywords" content="Matthew Bird, About, Portfolio">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/blog.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm sticky-top navbar-light" id="navbar">
+    <div class="container-fluid">
+        <a href="/" class="navbar-brand">Matthew Bird</a>
+        
+        <!-- links -->
+        <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto" id="navbar-links">
+            <li class="nav-item">
+                <a id="home-nav" href="/" class="nav-link theme2">Home</a>
+            </li>
+            
+            <li class="nav-item">
+                <a id="blogs-nav" href="/blogs.html" class="nav-link theme2">Blogs</a>
+            </li>
+
+            <li class="nav-item">
+                <a id="about-nav" href="/about.html" class="nav-link theme2">About</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+
+
+    <!-- Content -->
+    <div class="content col-md-8 offset-md-2 col-12">
+        <div class="header">
+            <h1 class="title d-inline">AR Tetris 3D</h1>
+            <h6 class="tags d-inline">[Augmented Reality]</h6>
+            <h3 class="synopsis">Creating augmented reality Tetris 3D with Unity. </h3>
+            <h6 class="author d-inline">Matthew Bird</h6>
+            <h6 class="date d-inline">Sun, Jul 14, 2024</h6>
+        </div>
+        <div class="main">
+            <img class="img-fluid" src="..\assets\imgs\Tetris Thumbnail.png" alt="[Desc]">
+            <h4>Demo Vids: None - my phone camera is broken :( </h4>
+            <h4>Github Repository: <a href="https://github.com/mbird1258/Tetris-3D">https://github.com/mbird1258/Tetris-3D</a></h4>
+            
+            <h2>Premise</h2>
+            <p>My plan for this project was to create Tetris 3D with Unity using the AR Foundation Samples github repository. </p>
+
+            <h2>Controls</h2>
+            <p class="multiline">Soft fall: hold down top half of screen
+Hard fall: swipe down starting at top half of screen</p>
+            <p class="multiline">Toggle translation/rotation: tap bottom half of screen
+Translation/rotation: drag finger in bottom half of screen</p>
+
+            <h2>Mechanics</h2>
+            <h3>Soft Bodies</h3>
+            <p>The soft bodies were created using the <a href="https://github.com/Ideefixze/Softbodies/tree/master/Softbodies/Assets/Riggedbody">Ideefixze's Softbodies repository's riggedbody feature</a> as well as an armature made in blender. Essentially, the script works by creating rigidbodies at each joint of the armature and attaching springs between them to create a jelly effect, and it seemed to work quite well for the tetris pieces.</p>
+            
+            <h3>Rotation</h3>
+            <p>There were two main parts to this problem. First, the script determines which axis to rotate by finding all points on each of the three axes that have a slope/gradient matching our first touch movement. To accomplish this, the derivative is taken of all three axes to create a function for x and y with respect to dy and dx.(<a href="https://www.desmos.com/calculator/oclrhpxkwi">desmos</a>) After this, the script takes the closest point to determine our selected axis.</p>
+            <p>After this is done, the script has to continuously update the projection of our finger's position on screen to the axis, and then use this to determine our desired change in rotation. (<a href="https://www.desmos.com/calculator/jhaxiuzhz4">desmos</a>)</p>
+            <iframe src="https://www.desmos.com/calculator/oclrhpxkwi" width="100%" style="min-height:600px; padding:0px 0px 22px"></iframe>
+            <iframe src="https://www.desmos.com/calculator/jhaxiuzhz4" width="100%" style="min-height:600px; padding:0px 0px 22px"></iframe>
+
+            <h3>Falling</h3>
+            <p>To accomplish falling physics, the script moves the tetris piece down at a set amount of units every time step until it collides with something. To avoid intersection, the script does a raycast to determine how far it should move if it were to intersect after the movement. After the block collides with a surface or another block, the script enables gravity for the object and the soft body physics for the object, as well as imparting an initial velocity equal to the static fall speed of the object.</p>
+
+            <h3>Hard fall</h3>
+            <p>The hard fall mechanic is similar to falling, raycasting downwards until it collides with something, and then moving the block down accordingly.</p>
+            
+            <h3>Overlaying cameras</h3>
+            <p>To avoid issues with the riggedbody script that occurred when scaling objects down to small sizes, the game renders the tetris field and blocks with a separate camera, and changes the position of the camera and orientation of the play field in accordance to the relative position of the phone to the position of the play field in real life.</p>
+
+            <h3>Layer clearing</h3>
+            <p>Due to the fact that the game is non-grid based and in 3 dimensions, layer clearing is a bit different from tetris. To clear layers, since each layer is a 2x10x1 rectangle, the script checks for collisions at each of the 20 points on an invisible grid per layer, and if they all are colliding with blocks, the script clears the layer. To make the process more forgiving, when a point fails the collision test, the script also checks at a -0.5 and +0.5 offset, and if both are colliding, the script still clears the line. To break up the pieces, the script creates cubes at each of the four positions of each shape and removes any that intersect with the layer. </p>
+
+            <h2>Gameplay</h2>
+            <p>The gameplay is pretty good, and the layer clearing doesn't feel too generous nor too strict. However, the game does feel a bit unadorned and monotonous due to a lack of features that I was originally intending to add but lacked the time to do so.(Queue and Hold, Modifiers, Building structures, Bosses, Tutorial)</p>
+
+            <h2>How to Run</h2>
+            <p class="multiline">1. Download unity and xcode
+2. Download github repo
+3. Open github repo in unity and open the anchors scene
+4. Press build and run on repeat, fixing issues shown in console until xcode starts giving issues
+5. Go to xcode and fix all the issues (like changing com.unity.___ to com.[not unity].___)
+6. Build to phone with dev mode on</p>
+        </div>
+        <div class="footer">
+            <p class="d-inline">Feel free to contact me about anything!</p>
+            <a href="/about.html"><p class="d-inline">Contacts</p></a>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="row fixed-bottom" id="page-footer">
+            <div class="col-md-4 offset-md-4 text-center">
+                
+                <a href="/">© Matthew-Bird.com</a>
+            </div>
+            <div class="col-md-4 text-end">
+                <p>Made by Matthew Bird</p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

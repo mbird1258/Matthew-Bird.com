@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Matthew Bird</title>
+    <meta name="description" content="Matthew Bird Portfolio">
+    <meta name="keywords" content="Matthew Bird, About, Portfolio">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/blog.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm sticky-top navbar-light" id="navbar">
+    <div class="container-fluid">
+        <a href="/" class="navbar-brand">Matthew Bird</a>
+        
+        <!-- links -->
+        <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto" id="navbar-links">
+            <li class="nav-item">
+                <a id="home-nav" href="/" class="nav-link theme2">Home</a>
+            </li>
+            
+            <li class="nav-item">
+                <a id="blogs-nav" href="/blogs.html" class="nav-link theme2">Blogs</a>
+            </li>
+
+            <li class="nav-item">
+                <a id="about-nav" href="/about.html" class="nav-link theme2">About</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+
+
+    <!-- Content -->
+    <div class="content col-md-8 offset-md-2 col-12">
+        <div class="header">
+            <h1 class="title d-inline">Audio Decomposition</h1>
+            <h6 class="tags d-inline">[Blind Source Seperation]</h6>
+            <h3 class="synopsis">Open source seperation of music into constituent instruments. Made from scratch without external instrument seperation libraries. </h3>
+            <h6 class="author d-inline">Matthew Bird</h6>
+            <h6 class="date d-inline">Tue, Oct 1, 2024</h6>
+        </div>
+        <div class="main">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item d-inline" src="https://youtu.be/LkDJ9XT-klU" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item d-inline" src="https://youtu.be/mzPUfs9sYQE" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item d-inline" src="https://youtu.be/Z7D6obv12zk" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item d-inline" src="https://youtu.be/-i0PSxcoDH0" allowfullscreen></iframe>
+            </div>
+            <h4>Demo Vids: <a href="https://youtu.be/LkDJ9XT-klU">https://youtu.be/LkDJ9XT-klU</a>, <a href="https://youtu.be/mzPUfs9sYQE">https://youtu.be/mzPUfs9sYQE</a>, <a href="https://youtu.be/Z7D6obv12zk">https://youtu.be/Z7D6obv12zk</a>, <a href="https://youtu.be/-i0PSxcoDH0">https://youtu.be/-i0PSxcoDH0</a></h4>
+            <h4>Github Repository: <a href="https://github.com/mbird1258/Audio-Decomposition">https://github.com/mbird1258/Audio-Decomposition</a></h4>
+            
+            <h2>Premise</h2>
+            <p>My plan for this project was to create a program to turn music to sheet music. It was mainly incentivised by my own desire to turn music to sheet music and the lack (from what I could tell) of open source, simple algorithms to perform audio source separation. </p>
+
+            <h2>Preparation</h2>
+            <h3>Instrument data</h3>
+            <p>The instrument data all comes from the <a href="https://theremin.music.uiowa.edu/MIS.html">University of Iowa Electronic Music Studios instrument database</a>. With these files, we find the Fourier transform of the entire wave and the envelope of the wave using the same method as documented below. </p>
+
+            <h2>How it works</h2>
+            <p>An instrument’s sound wave is mainly characterized by its fourier transform and envelope. Thus, we can use both of these to hopefully get a good idea of which instrument is playing what note. </p>
+
+            <h3>Fourier Transform</h3>
+            <p>The program’s first method of splitting music into constituent notes and instruments is by taking the fourier transform of the music file every 0.1 seconds (spectrogram), and adding together our stored fourier transform of each instrument to recreate the fourier transform of the 0.1 second window. The idea was to hopefully perfectly recreate the music at the set time as the fourier transform should represent the music played relatively well. </p>
+            <img class="img-fluid" src="..\assets\imgs\Audio Decomposition\1.png">
+            <h5>Original fourier transform</h5>
+            <img class="img-fluid" src="..\assets\imgs\Audio Decomposition\2.png">
+            <h5>Constituent instruments</h5>
+            <img class="img-fluid" src="..\assets\imgs\Audio Decomposition\3.png">
+            <h5>Recreated fourier transform</h5>
+            <p>The magnitudes for each instrument are given by solving the following matrix. The matrix is derived from taking the partial derivative of the MSE cost function by frequency(ex. FT value at 5 hz) with respect to each instrument. Each row in the matrix is a different partial derivative. (First is w.r.t cello, second is w.r.t piano, etc.)</p>
+            <img class="img-fluid" src="..\assets\imgs\Audio Decomposition\4.jpg">
+
+            <h3>Envelope</h3>
+            <p>The first step to matching the envelope of the instrument to the sound wave is to obtain the envelope itself. The envelope is the upper bound of a wave, and although there are functions to do this, they seemingly struggle with noise and certain types of sound waves. Thus, since we have to handle many different instruments at different frequencies, we need a more robust solution. </p>
+            <p>To get the envelope, the function splits the sound wave into chunks, before taking the max value at each chunk. To further refine the results, the function finds the points where the envelope is below the original sound wave and adds a new point defining the envelope. </p>
+            <img class="img-fluid" src="..\assets\imgs\Audio Decomposition\5.jpg", style="width: 400px">
+            <img class="img-fluid" src="..\assets\imgs\Audio Decomposition\6.jpg", style="width: 400px">
+            <img class="img-fluid" src="..\assets\imgs\Audio Decomposition\7.jpg", style="width: 400px">
+            <img class="img-fluid" src="..\assets\imgs\Audio Decomposition\8.jpg", style="width: 400px">
+            <p>The next step is to split the envelope of the wave into its attack, sustain, and release. The attack is the initial noise of the note, the sustain is while the note is held, and the release is when the note stops. For the instrument samples, we can take the first nonzero value of the wave to get the start of the attack. To get the point between the attack and sustain, we get the first point when the function is concave down or decreasing. To get the point between the sustain and release, we get the first point from the end where the function is increasing or concave down. To get the end of the release, we find the first point from the end where the function is nonzero. </p>
+            <p>To further classify the wave, we need to take into account the main forms the wave can take. Some instruments, such as the piano, have static decay, in which they mostly follow an exponential decay shape. On the other hand, some instruments, like the violin, can increase or decrease in volume as the note is sustained. In addition to this, some audio samples in the instrument files are held until their sound expires, while others are released early. To differentiate whether the decay is static or dynamic, if the decay factor is >1, or if it deviates from the decay curve by too much, it’s dynamic. To differentiate if the envelope has a release or not(AS or ASR), we look at the average rate of change across the sustain and the release, and if the rate of change of the release is lower then there is no release. </p>
+            <img class="img-fluid" src="..\assets\imgs\Audio Decomposition\9.jpg">
+            <h5>Different types of wave</h5>
+            <p>To deal with the music file, we first take the bandpass filter of the signal for each note frequency. With the filtered wave, we iterate through each instrument. For each instrument, we take the cross correlation of the instrument’s attack(normalized) and release(normalized) to find the start and end of each note, and then take the MSE of the instrument wave and the filtered audio to get our cost for the instrument at that time. After this, we multiply the magnitude we found in the fourier transform step and 1/(cost we found in this step) to get our final magnitudes. </p>
+
+            <h2>Display</h2>
+            <p>To display the file, we use matplotlib’s scatter plot with - shaped points to display the sheet music. Originally, I wanted to recreate the audio from the magnitudes, but it led to many issues, took a while, and made troubleshooting much harder. I also tried using matplotlib’s imshow plot, but it’s extremely inefficient in this case as most values are 0, and matplotlib needs to redraw every point regardless of if it’s on screen or not every time we pan or zoom the screen. </p>
+            <img class="img-fluid" src="..\assets\imgs\Audio Decomposition\10.png", style="width: 1000px">
+
+            <h2>Results</h2>
+            <p>Overall, I think it works quite well. You can use it to make recreating sheet music better(as I did <a href="https://www.noteflight.com/scores/view/ffb92ff50357ea0bb2ab4f7ea7b50a9060c7aa1a">here</a> from <a href="https://www.youtube.com/watch?v=bDtT8VZMEHw">this video</a>), especially if you struggle with finding the right pitch or chords, and it doesn’t take too much time to run either. </p>
+        </div>
+        <div class="footer">
+            <p class="d-inline">Feel free to contact me about anything!</p>
+            <a href="/about.html"><p class="d-inline">Contacts</p></a>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="row fixed-bottom" id="page-footer">
+            <div class="col-md-4 offset-md-4 text-center">
+                
+                <a href="/">© Matthew-Bird.com</a>
+            </div>
+            <div class="col-md-4 text-end">
+                <p>Made by Matthew Bird</p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

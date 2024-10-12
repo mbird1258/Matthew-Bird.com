@@ -1,0 +1,94 @@
+@use "sass:map";
+@import "./node_modules/bootstrap/scss/bootstrap";
+
+$theme-colors: (
+    "black": #242424,
+    "white": #fefefe,
+    "bone": #fafafa,
+    "gray":  #DCDCDC,
+    "dark-gray": #828282,
+    "light-blue": #52B2BF,
+    "blue": #00ac9e,
+    "navy-blue": #2832C2
+);
+
+.video-background {
+    position: fixed;
+    top: 0%;
+    left: 50%;
+    max-width: 80%;
+    margin-top: 63px;
+    transform: translate(-50%, -15.6%);
+}
+
+#container {
+    height: 150vh;
+    transform: translate(0, -63px)
+}
+
+#project-cards {
+    position: relative;
+    background-color: map.get($theme-colors, "white");
+    padding: 0px 0px 93px;
+}
+
+#project-cards .card {
+    border-radius: 12px;
+    box-shadow: 0px 2px 5px map.get($theme-colors, "gray");
+}
+
+#project-cards img {
+    object-fit: contain;
+}
+
+#project-cards .description-text {
+    background-color: rgba(0,0,0,0);
+    padding: 20px;
+    text-align: left;
+}
+
+#project-cards .description-text h1 {
+    font-size: 40px;
+}
+
+#project-cards .description-text h5 {
+    padding: 0px 0px 0px 5px;
+    font-size: 20px;
+    color: map.get($theme-colors, "dark-gray");
+}
+
+#project-cards .description-text #tags {
+    padding: 3px 0px 30px;
+}
+
+#project-cards .description-text #tags h6 {
+    font-size: 25px;
+}
+
+#project-cards .description-text p {
+    font-size: 20px;
+}
+
+#project-cards .description-text a {
+    font-size: 25px;
+    color: map.get($theme-colors, "blue");
+    text-decoration: none;
+}
+
+@media (min-width: 1200px) {
+    #project-cards .card{
+        margin: 0px 30px 30px;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 1200px) {
+    #project-cards .card{
+        margin: 0px 15px 30px;
+    }
+}
+
+@media (max-width: 800px) {
+    #project-cards .card{
+        margin: 0px 0px 30px;
+    }
+}

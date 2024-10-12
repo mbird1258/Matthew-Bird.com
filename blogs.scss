@@ -1,0 +1,66 @@
+@use "sass:map";
+@import "./node_modules/bootstrap/scss/bootstrap";
+
+$theme-colors: (
+    "black": #242424,
+    "white": #fefefe,
+    "bone": #fafafa,
+    "gray":  #DCDCDC,
+    "dark-gray": #828282,
+    "light-blue": #52B2BF,
+    "blue": #00ac9e,
+    "navy-blue": #2832C2
+);
+
+a {
+    text-decoration: none;
+}
+
+#project-cards {
+    padding: 50px 0px 0px;
+}
+
+#project-cards .card {
+    border-radius: 12px;
+    box-shadow: 0px 2px 5px map.get($theme-colors, "gray");
+    margin: 0px 0px 50px
+}
+
+#project-cards img {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+}
+
+#project-cards .description-text {
+    background-color: rgba(0,0,0,0);
+    text-align: left;
+    padding: 20px 0px 20px;
+}
+
+#project-cards .description-text h1 {
+    font-size: 30px;
+}
+
+#project-cards .description-text #tags h6 {
+    padding: 0px 0px 0px 5px;
+    font-size: 20px;
+}
+
+#project-cards .description-text p {
+    padding: 5px 0px 0px;
+    font-size: 18px;
+}
+
+#project-cards .description-text h5 {
+    font-size: 15px;
+    color: map.get($theme-colors, "dark-gray");
+}
+
+#project-cards .description-text a {
+    font-size: 20px;
+    color: map.get($theme-colors, "blue");
+    text-decoration: none;
+}

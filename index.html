@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Matthew Bird</title>
+    <meta name="description" content="Matthew Bird Portfolio">
+    <meta name="keywords" content="Matthew Bird, About, Portfolio">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm sticky-top navbar-light" id="navbar">
+    <div class="container-fluid">
+        <a href="/" class="navbar-brand">Matthew Bird</a>
+        
+        <!-- links -->
+        <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto" id="navbar-links">
+            <li class="nav-item">
+                <a id="home-nav" href="/" class="nav-link theme2">Home</a>
+            </li>
+            
+            <li class="nav-item">
+                <a id="blogs-nav" href="/blogs.html" class="nav-link theme2">Blogs</a>
+            </li>
+
+            <li class="nav-item">
+                <a id="about-nav" href="/about.html" class="nav-link theme2">About</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+
+
+    <!-- Image -->
+    <div style="height: 60vh; overflow: clip">
+        <div class="offset-xl-2 col-xl-8 offset-sm-1 col-sm-10">
+            <video src="assets/imgs/animation.mp4" playsinline="true" webkit-playsinline="true" preload="auto" muted="muted" class="video-background"></video>
+            <div id="container"></div>
+        </div>
+    </div>
+
+
+    <!-- Portfolio -->
+    <div id="project-cards" class="row no-gutters offset-xl-2 col-xl-8 offset-sm-1 col-sm-10">
+        <!-- Left -->
+        <div class="col-md-6">
+            <!-- [Proj 1] -->
+            <div class="card" style="overflow:clip">
+                <img src="/assets/imgs/Dino ML Thumbnail.png" alt="Dino-Game-ML">
+                <div class="description-text">
+                    <div>
+                    <h1 class="d-inline">Dino Game with ML</h1>
+                    <h5>Sun, Feb 25, 2024</h5>
+                    </div>
+                    
+                    <div id="tags">
+                    <h6 class="d-inline">[Machine Learning]</h6>
+                    </div>
+
+                    <p>A basic machine learning algorithm made to beat the dino game. Made without external machine learning libraries. </p>
+                    <a href="/blogs/Dino-Game-ML.html">See More</a>
+                </div>
+            </div>
+            
+            <!-- [Proj 3] -->
+            <div class="card" style="overflow:clip">
+                <img src="/assets/imgs/Drone Rel Pos Thumbnail.jpg" alt="Drone-Rel-Pos">
+                <div class="description-text">
+                    <div>
+                    <h1 class="d-inline">Drone Relative Positioning</h1>
+                    <h5>Thu, Oct 10, 2024</h5>
+                    </div>
+                    
+                    <div id="tags">
+                    <h6 class="d-inline">[Drones]</h6>
+                    <h6 class="d-inline">[Computer Vision]</h6>
+                    </div>
+
+                    <p>Localization of drones and more with cameras using feature matching and mapping. </p>
+                    <a href="/blogs/Drone-Rel-Pos.html">See More</a>
+                </div>
+            </div>
+            
+            <!-- [Proj 5]
+            <div class="card" style="overflow:clip">
+                <img src="/assets/imgs/" alt="[Project Name]">
+                <div class="description-text">
+                    <div>
+                    <h1 class="d-inline">[Project Name]</h1>
+                    <h5 class="d-inline">[Date]</h5>
+                    </div>
+                    
+                    <div id="tags">
+                    <h6 class="d-inline">[Tag]</h6>
+                    <h6 class="d-inline">[Tag]</h6>
+                    <h6 class="d-inline">[Tag]</h6>
+                    </div>
+
+                    <p>[Project Description]</p>
+                    <a href="/blogs/[Project Name].html">See More</a>
+                </div>
+            </div> -->
+        </div>
+
+        <!-- Right -->
+        <div class="col-md-6">
+            <!-- [Proj 2] -->
+            <div class="card" style="overflow:clip">
+                <img src="/assets/imgs/BSS Thumbnail.png" alt="Audio-Decomposition">
+                <div class="description-text">
+                    <div>
+                    <h1 class="d-inline">Audio Decomposition</h1>
+                    <h5>Tue, Oct 1, 2024</h5>
+                    </div>
+                    
+                    <div id="tags">
+                    <h6 class="d-inline">[Blind Source Seperation]</h6>
+                    </div>
+
+                    <p>Open source seperation of music into constituent instruments. Made from scratch without external instrument seperation libraries. </p>
+                    <a href="/blogs/Audio-Decomposition.html">See More</a>
+                </div>
+            </div>
+            
+            <!-- [Proj 4] -->
+            <div class="card" style="overflow:clip">
+                <img src="/assets/imgs/Tetris Thumbnail.png" alt="Tetris-3D">
+                <div class="description-text">
+                    <div>
+                    <h1 class="d-inline">AR Tetris 3D</h1>
+                    <h5 class="d-inline">Sun, Jul 14, 2024</h5>
+                    </div>
+                    
+                    <div id="tags">
+                    <h6 class="d-inline">[Augmented Reality]</h6>
+                    </div>
+
+                    <p>Creating augmented reality Tetris 3D with Unity. </p>
+                    <a href="/blogs/Tetris-3D.html">See More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Footer -->
+    <footer>
+        <div class="row fixed-bottom" id="page-footer">
+            <div class="col-md-4 offset-md-4 text-center">
+                
+                <a href="/">© Matthew-Bird.com</a>
+            </div>
+            <div class="col-md-4 text-end">
+                <p>Made by Matthew Bird</p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+    <script type="module" src="/index.js"></script>
+</body>
+</html>

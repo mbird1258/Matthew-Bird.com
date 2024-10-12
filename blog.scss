@@ -1,0 +1,111 @@
+@use "sass:map";
+@import "./node_modules/bootstrap/scss/bootstrap";
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+$theme-colors: (
+    "black": #242424,
+    "white": #fefefe,
+    "bone": #fafafa,
+    "gray":  #DCDCDC,
+    "dark-gray": #828282,
+    "light-blue": #52B2BF,
+    "blue": #00ac9e,
+    "navy-blue": #2832C2
+);
+
+.multiline {
+    white-space: pre-wrap;
+}
+
+.content {
+    padding: 20px 50px 20px;
+}
+
+.header {
+    padding: 0px 0px 15px;
+}
+
+.header h1 {
+    font-size: 50px;
+}
+
+.header .tags {
+    font-size: 30px;
+    color: map.get($theme-colors, "dark-gray");
+}
+
+.header .synopsis {
+    font-size: 25px;
+    font-weight: 400;
+    color: map.get($theme-colors, "black");
+    padding: 0px 0px 5px;
+}
+
+.header .author {
+    font-size: 18px;
+    color: map.get($theme-colors, "dark-gray");
+}
+
+.header .date {
+    padding: 0px 0px 0px 10px;
+    font-size: 18px;
+    color: map.get($theme-colors, "dark-gray");
+}
+
+.main {
+    padding: 0px 0px 15px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.main .embed-responsive {
+    padding: 15px 0px 15px;
+}
+
+.main #img-container {
+    overflow:hidden;
+}
+
+.main img {
+    object-fit: contain;
+    padding: 0px 0px 22px;
+}
+
+.main h2 {
+    font-size: 35px;
+    color: map.get($theme-colors, "black");
+}
+
+.main h3 {
+    font-size: 30px;
+    color: map.get($theme-colors, "dark-gray");
+}
+
+.main h4 {
+    font-size: 22px;
+    color: map.get($theme-colors, "dark-gray");
+}
+
+.main h5 {
+    font-size: 18px;
+    color: map.get($theme-colors, "dark-gray");
+    padding: 0px 0px 5px;
+}
+
+.main p {
+    font-size: 22px;
+    font-weight: 100;
+    color: map.get($theme-colors, "black");
+    padding: 0px 0px 22px;
+}
+
+.footer {
+    font-size: 20px;
+    color: map.get($theme-colors, "black");
+    padding: 0px 0px 122px;
+}
+
+a {
+    color: map.get($theme-colors, "blue");
+    text-decoration: none;
+}
