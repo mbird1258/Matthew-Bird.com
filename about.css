@@ -11844,14 +11844,24 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-#pic {
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  object-position: 0px -40px;
+@media (min-width: 1000px) {
+  #pic {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: 0px -40px;
+  }
 }
-
+@media (max-width: 1000px) {
+  #pic {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: 0px -20px;
+  }
+}
 #about-row {
   padding: 100px 0px 100px;
 }
@@ -11862,6 +11872,10 @@ a {
 
 .socials svg {
   margin: 0px 10px 0px;
+}
+
+.socials {
+  padding: 0px 0px 100px;
 }
 
 /*# sourceMappingURL=about.css.map */

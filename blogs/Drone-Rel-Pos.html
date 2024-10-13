@@ -20,7 +20,11 @@
         <a href="/" class="navbar-brand">Matthew Bird</a>
         
         <!-- links -->
-        <div class="collapse navbar-collapse">
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-container" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+        <div class="navbar-collapse collapse" id="navbar-container" style>
         <ul class="navbar-nav ms-auto" id="navbar-links">
             <li class="nav-item">
                 <a id="home-nav" href="/" class="nav-link theme2">Home</a>
@@ -65,11 +69,11 @@
 
             <h3>Feature detection</h3>
             <p>To detect features, we use the <a href="https://en.m.wikipedia.org/wiki/Features_from_accelerated_segment_test">FAST algorithm</a> to detect corners. Then, we calculate descriptors for each of these points that are scale and rotationally invariant and match the points to each other.</p>
-            <img src="..\assets\imgs\Drone Rel Pos\1.jpg">
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\1.jpg">
             
             <h3>Feature triangulation</h3>
             <p>To find the 3d position of the features, we can draw a line in 3d space from the center of both cameras on the central drone and approximate the intersecting point in 3d space to find the feature’s position in 3d space. </p>
-            <img src="..\assets\imgs\Drone Rel Pos\2.jpg">
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\2.jpg">
             
             <h3>Reverse triangulation</h3>
             <p>To find the 3d position of a camera from any two features, we can use the same method as before, but instead of drawing from the center of both cameras, we anchor the lines on the feature points in 3d space and approximate the intersection to find our camera’s position. We do this for every set of two features and remove outliers to get our final position. </p>
@@ -77,13 +81,13 @@
             <h3>Accounting for orientation</h3>
             <p>To account for the orientation, we first need to find our orientation. For pitch and roll, I used an accelerometer, but finding yaw is a bit more difficult.</p>
             <p>To find the yaw, we take any pair of matched features across two cameras, one from the central drone and another from the second drone. Then, we can use the offset in angle of the descriptors we used, such as the difference in direction of the vectors from the same descriptor, which we calculated during feature matching. This gives us the relative yaw of every drone with respect to the central drone.</p>
-            <img src="..\assets\imgs\Drone Rel Pos\3.jpg">
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\3.jpg">
             <p>Accounting for yaw is not too hard, as we can rotate the images we captured from the cameras by the corresponding yaw angle before triangulating the points. </p>
-            <img src="..\assets\imgs\Drone Rel Pos\4.jpg">
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\4.jpg">
             <p>To account for pitch and roll on the central drone, after triangulating the 3d position of all the features, we can then rotate their positions around the origin in accordance with the pitch and yaw to properly account for the pitch and roll. </p>
-            <img src="..\assets\imgs\Drone Rel Pos\5.jpg">
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\5.jpg">
             <p>For the secondary drones, we can change the stored position of the features on the screen in accordance with the pitch and roll before triangulating the position of the camera. This effectively changes the slope of all the lines before determining their intersection point to properly account for the pitch and roll. </p>
-            <img src="..\assets\imgs\Drone Rel Pos\6.jpg">
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\6.jpg">
             
             <h3>Hardware</h3>
             <p>The full list of hardware used in this project are 3 RasPi 0Ws, 3 RasPi camera modules, 2 accelerometers, 2 power banks, 3 usb to micro usb cables, 3 micro SD cards, and a micro SD to usb adapter. </p>

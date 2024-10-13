@@ -11849,6 +11849,12 @@ body {
   background-color: #fefefe;
 }
 
+@media (max-width: 600px) {
+  body {
+    max-width: 92vw;
+    transform: translate(4vw, 0);
+  }
+}
 #navbar {
   background-color: #fafafa;
   padding: 10px 30px 10px;

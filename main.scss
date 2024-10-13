@@ -17,6 +17,13 @@ body {
     background-color: map.get($theme-colors, "white");
 }
 
+@media (max-width:600px){
+    body{
+        max-width: 92vw;
+        transform: translate(4vw, 0);
+    }
+}
+
 #navbar {
     background-color: map.get($theme-colors, "bone");
     padding: 10px 30px 10px;
