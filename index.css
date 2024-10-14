@@ -11879,34 +11879,54 @@ textarea.form-control-lg {
   text-align: left;
 }
 
-#project-cards .description-text h1, #project-cards .description-text .h1 {
-  font-size: 40px;
+@media (max-width: 950px) {
+  #project-cards .description-text h1, #project-cards .description-text .h1 {
+    font-size: 30px;
+  }
+  #project-cards .description-text h5, #project-cards .description-text .h5 {
+    padding: 0px 0px 0px 5px;
+    font-size: 17px;
+    color: #828282;
+  }
+  #project-cards .description-text #tags {
+    padding: 3px 0px 30px;
+  }
+  #project-cards .description-text #tags h6, #project-cards .description-text #tags .h6 {
+    font-size: 20px;
+  }
+  #project-cards .description-text p {
+    font-size: 17px;
+  }
+  #project-cards .description-text a {
+    font-size: 18px;
+    color: #00ac9e;
+    text-decoration: none;
+  }
 }
-
-#project-cards .description-text h5, #project-cards .description-text .h5 {
-  padding: 0px 0px 0px 5px;
-  font-size: 20px;
-  color: #828282;
+@media (min-width: 950px) {
+  #project-cards .description-text h1, #project-cards .description-text .h1 {
+    font-size: 40px;
+  }
+  #project-cards .description-text h5, #project-cards .description-text .h5 {
+    padding: 0px 0px 0px 5px;
+    font-size: 20px;
+    color: #828282;
+  }
+  #project-cards .description-text #tags {
+    padding: 3px 0px 30px;
+  }
+  #project-cards .description-text #tags h6, #project-cards .description-text #tags .h6 {
+    font-size: 25px;
+  }
+  #project-cards .description-text p {
+    font-size: 20px;
+  }
+  #project-cards .description-text a {
+    font-size: 25px;
+    color: #00ac9e;
+    text-decoration: none;
+  }
 }
-
-#project-cards .description-text #tags {
-  padding: 3px 0px 30px;
-}
-
-#project-cards .description-text #tags h6, #project-cards .description-text #tags .h6 {
-  font-size: 25px;
-}
-
-#project-cards .description-text p {
-  font-size: 20px;
-}
-
-#project-cards .description-text a {
-  font-size: 25px;
-  color: #00ac9e;
-  text-decoration: none;
-}
-
 @media (min-width: 1200px) {
   #project-cards .card {
     margin: 0px 30px 30px;

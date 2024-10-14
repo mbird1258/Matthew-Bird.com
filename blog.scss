@@ -26,31 +26,62 @@ $theme-colors: (
     padding: 0px 0px 15px;
 }
 
-.header h1 {
-    font-size: 50px;
+@media (max-width: 700px){
+    .header h1 {
+        font-size: 35px;
+    }
+
+    .header .tags {
+        font-size: 20px;
+        color: map.get($theme-colors, "dark-gray");
+    }
+
+    .header .synopsis {
+        font-size: 18px;
+        font-weight: 400;
+        color: map.get($theme-colors, "black");
+        padding: 0px 0px 5px;
+    }
+
+    .header .author {
+        font-size: 12px;
+        color: map.get($theme-colors, "dark-gray");
+    }
+
+    .header .date {
+        padding: 0px 0px 0px 10px;
+        font-size: 12px;
+        color: map.get($theme-colors, "dark-gray");
+    }
 }
 
-.header .tags {
-    font-size: 30px;
-    color: map.get($theme-colors, "dark-gray");
-}
+@media (min-width: 700px){
+    .header h1 {
+        font-size: 50px;
+    }
 
-.header .synopsis {
-    font-size: 25px;
-    font-weight: 400;
-    color: map.get($theme-colors, "black");
-    padding: 0px 0px 5px;
-}
+    .header .tags {
+        font-size: 30px;
+        color: map.get($theme-colors, "dark-gray");
+    }
 
-.header .author {
-    font-size: 18px;
-    color: map.get($theme-colors, "dark-gray");
-}
+    .header .synopsis {
+        font-size: 25px;
+        font-weight: 400;
+        color: map.get($theme-colors, "black");
+        padding: 0px 0px 5px;
+    }
 
-.header .date {
-    padding: 0px 0px 0px 10px;
-    font-size: 18px;
-    color: map.get($theme-colors, "dark-gray");
+    .header .author {
+        font-size: 18px;
+        color: map.get($theme-colors, "dark-gray");
+    }
+
+    .header .date {
+        padding: 0px 0px 0px 10px;
+        font-size: 18px;
+        color: map.get($theme-colors, "dark-gray");
+    }
 }
 
 .main {
@@ -71,38 +102,76 @@ $theme-colors: (
     padding: 0px 0px 22px;
 }
 
-.main h2 {
-    font-size: 35px;
-    color: map.get($theme-colors, "black");
+@media (max-width: 700px){
+    .main h2 {
+        font-size: 30px;
+        color: map.get($theme-colors, "black");
+    }
+
+    .main h3 {
+        font-size: 27px;
+        color: map.get($theme-colors, "dark-gray");
+    }
+
+    .main h4 {
+        font-size: 19px;
+        color: map.get($theme-colors, "dark-gray");
+    }
+
+    .main h5 {
+        font-size: 15px;
+        color: map.get($theme-colors, "dark-gray");
+        padding: 0px 0px 5px;
+    }
+
+    .main p {
+        font-size:19px;
+        font-weight: 100;
+        color: map.get($theme-colors, "black");
+        padding: 0px 0px 22px;
+    }
+
+    .footer {
+        font-size: 17px;
+        color: map.get($theme-colors, "black");
+        padding: 0px 0px 122px;
+    }
 }
 
-.main h3 {
-    font-size: 30px;
-    color: map.get($theme-colors, "dark-gray");
-}
+@media (min-width: 700px){
+    .main h2 {
+        font-size: 35px;
+        color: map.get($theme-colors, "black");
+    }
 
-.main h4 {
-    font-size: 22px;
-    color: map.get($theme-colors, "dark-gray");
-}
+    .main h3 {
+        font-size: 30px;
+        color: map.get($theme-colors, "dark-gray");
+    }
 
-.main h5 {
-    font-size: 18px;
-    color: map.get($theme-colors, "dark-gray");
-    padding: 0px 0px 5px;
-}
+    .main h4 {
+        font-size: 22px;
+        color: map.get($theme-colors, "dark-gray");
+    }
 
-.main p {
-    font-size: 22px;
-    font-weight: 100;
-    color: map.get($theme-colors, "black");
-    padding: 0px 0px 22px;
-}
+    .main h5 {
+        font-size: 18px;
+        color: map.get($theme-colors, "dark-gray");
+        padding: 0px 0px 5px;
+    }
 
-.footer {
-    font-size: 20px;
-    color: map.get($theme-colors, "black");
-    padding: 0px 0px 122px;
+    .main p {
+        font-size: 22px;
+        font-weight: 100;
+        color: map.get($theme-colors, "black");
+        padding: 0px 0px 22px;
+    }
+
+    .footer {
+        font-size: 20px;
+        color: map.get($theme-colors, "black");
+        padding: 0px 0px 122px;
+    }
 }
 
 a {

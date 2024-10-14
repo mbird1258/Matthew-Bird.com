@@ -11844,7 +11844,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-@media (min-width: 1000px) {
+@media (min-width: 700px) {
   #pic {
     border-radius: 50%;
     width: 200px;
@@ -11852,8 +11852,15 @@ textarea.form-control-lg {
     object-fit: cover;
     object-position: 0px -40px;
   }
+  .socials svg .svg {
+    width: 96px;
+    height: 128px;
+  }
+  #about-row p {
+    font-size: 22px;
+  }
 }
-@media (max-width: 1000px) {
+@media (max-width: 700px) {
   #pic {
     border-radius: 50%;
     width: 100px;
@@ -11861,9 +11868,16 @@ textarea.form-control-lg {
     object-fit: cover;
     object-position: 0px -20px;
   }
+  .socials svg .svg {
+    width: 48px;
+    height: 64px;
+  }
+  #about-row p {
+    font-size: 18px;
+  }
 }
 #about-row {
-  padding: 100px 0px 100px;
+  padding: 100px 0px 0px;
 }
 
 a {
@@ -11875,7 +11889,7 @@ a {
 }
 
 .socials {
-  padding: 0px 0px 100px;
+  padding: 50px 0px 0px;
 }
 
 /*# sourceMappingURL=about.css.map */
