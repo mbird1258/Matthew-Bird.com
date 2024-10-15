@@ -29,39 +29,38 @@ a {
 #project-cards img {
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
-    width: 250px;
     height: 250px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 #project-cards .description-text {
     background-color: rgba(0,0,0,0);
     text-align: left;
-    padding: 20px 0px 20px;
+    padding: 20px 10px 20px;
 }
 
 @media (max-width: 700px){
     #project-cards .description-text h1 {
-        font-size: 20px;
+        font-size: 25px;
     }
 
     #project-cards .description-text #tags h6 {
         padding: 0px 0px 0px 5px;
-        font-size: 14px;
+        font-size: 18px;
     }
 
     #project-cards .description-text p {
         padding: 5px 0px 0px;
-        font-size: 12px;
+        font-size: 15px;
     }
 
     #project-cards .description-text h5 {
-        font-size: 12px;
+        font-size: 15px;
         color: map.get($theme-colors, "dark-gray");
     }
 
     #project-cards .description-text a {
-        font-size: 14px;
+        font-size: 18px;
         color: map.get($theme-colors, "blue");
         text-decoration: none;
     }
