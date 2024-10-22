@@ -36,12 +36,14 @@ a {
     padding: 20px 10px 20px;
 }
 
-@media (max-width: 700px){
+@media (max-width: 992px){
     #project-cards img {
         border-top-left-radius: 12px;
         border-top-right-radius: 12px;
     }
+}
 
+@media (max-width: 700px){
     #project-cards .description-text h1 {
         font-size: 25px;
     }
@@ -68,13 +70,15 @@ a {
     }
 }
 
-@media (min-width: 700px){
+@media (min-width: 992px){
     #project-cards img {
         height: 200px;
         border-top-left-radius: 12px;
         border-bottom-left-radius: 12px;
     }
+}
 
+@media (min-width: 700px){
     #project-cards .description-text h1 {
         font-size: 30px;
     }
