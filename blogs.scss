@@ -27,9 +27,6 @@ a {
 }
 
 #project-cards img {
-    border-top-left-radius: 12px;
-    border-bottom-left-radius: 12px;
-    height: 250px;
     object-fit: cover;
 }
 
@@ -40,6 +37,11 @@ a {
 }
 
 @media (max-width: 700px){
+    #project-cards img {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+    }
+
     #project-cards .description-text h1 {
         font-size: 25px;
     }
@@ -67,6 +69,12 @@ a {
 }
 
 @media (min-width: 700px){
+    #project-cards img {
+        height: 200px;
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+    }
+
     #project-cards .description-text h1 {
         font-size: 30px;
     }
