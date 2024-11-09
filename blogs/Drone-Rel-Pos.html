@@ -55,9 +55,9 @@
         </div>
         <div class="main">
             <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item d-inline" src="" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item d-inline" src="https://www.youtube.com/embed/QoqZZ-jRLvM" style="width:480px; height:270px" allowfullscreen></iframe>
             </div>
-            <h4>Demo Vids: <a href=""></a>
+            <h4>Demo Vids: <a href="https://youtu.be/QoqZZ-jRLvM">https://youtu.be/QoqZZ-jRLvM</a>
             <h4>Github Repository: <a href="https://github.com/mbird1258/Drone-relative-positioning">https://github.com/mbird1258/Drone-relative-positioning</a></h4>
             
             <h2>Premise</h2>
@@ -65,29 +65,61 @@
 
             <h2>How it works</h2>
             <h3>Overview</h3>
-            <p>The code uses two cameras on the central drone to create a 3d map of features, then the other drones can do the reverse from any two points to determine its own position in this 3d map of points. </p>
+            <p>The code uses two cameras on the central drone to create a 3d map of features, then the other drones do the reverse from any two points to determine its own position in this 3d map of points. </p>
 
             <h3>Feature detection</h3>
-            <p>To detect features, we use the <a href="https://en.m.wikipedia.org/wiki/Features_from_accelerated_segment_test">FAST algorithm</a> to detect corners. Then, we calculate descriptors for each of these points that are scale and rotationally invariant and match the points to each other.</p>
-            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\1.jpg">
+            <p>To detect features, we use the <a href="https://en.m.wikipedia.org/wiki/Features_from_accelerated_segment_test">FAST algorithm</a> to detect corners. To improve computation time, we also use some methods to remove ‘low quality’ key points. </p>
+            
+            <p>The first method, inspired by the SIFT algorithm, is to cull any points that aren’t substantially darker or lighter than the neighborhood. The second method, also inspired by the SIFT algorithm, is to cull any edges, which the FAST algorithm is often susceptible to classifying as corners. We do this by taking three (angle) ranges around the key point centered on the orientation of the key point. For each range, we find the average difference in brightness of the points in the range and the key point. If the value calculated for the central range is too close to either of the outside ranges, then we consider it an edge and cull it. </p>
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\1.jpg", style="width: 600px">
+            <h5>Edge culling algorithm</h5>
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\2.jpg">
+            <h5>Img after FAST</h5>
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\3.jpg">
+            <h5>Img after intensity cull</h5>
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\4.jpg">
+            <h5>Img after edge cull</h5>
+            
+            <p>With these key points, we calculate descriptors for each of these points that are scale and rotationally invariant and match the points to each other. </p>
+            <p>My first attempt was to use the following two descriptors for each key point. However, these 3 descriptors alone weren’t enough to reliably match each key point. </p>
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\5.jpg", style="width: 600px">
+            
+            <p>The method that ended up working was a bit more convoluted. First, we find the orientation of the key point through taking all nearby pixels in the point’s neighborhood whose brightness was within a certain range, then taking the average angle of the vectors from the key point to each pixel. </p>
+            
+            <p>With the orientation, we then split the area around the point into chunks while also taking into account orientation, a method inspired by the SIFT and SURF algorithms. This is also what gives us rotational invariance. Since the rotated points’ coordinates aren’t integers, we use 2d linear interpolation to approximate these values. </p>
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\6.jpg">
+            <h5>Key point orientations</h5>
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\7.jpg", style="width: 400px">
+            <h5>Descriptor chunks</h5>
+            
+            <p>After this, we create a vector for each square subsection in which we average all of the vectors starting from the center of the square to each point, and store the magnitude and direction. We also store the magnitude of the sum of the absolute value of each vector for an extra descriptor. </p>
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\8.jpg", style="width: 800px">
+            <h5>Descriptor calculation</h5>
+            
+            <p>With each key point now assigned a descriptor, we match key points across two images by taking the MSE of each key point in the first image to every other key point in the second image, and iteratively take the minimum value to match key points. </p>
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\9.jpg">
+            <h5>Matched key points</h5>
             
             <h3>Feature triangulation</h3>
-            <p>To find the 3d position of the features, we can draw a line in 3d space from the center of both cameras on the central drone and approximate the intersecting point in 3d space to find the feature’s position in 3d space. </p>
-            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\2.jpg">
+            <p>To find the 3d position of the features, we draw a line in 3d space from the center of both cameras on the central drone and approximate the intersecting point in 3d space to find the feature’s position in 3d space. </p>
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\10.jpg", style="width: 400px">
+            
             
             <h3>Reverse triangulation</h3>
-            <p>To find the 3d position of a camera from any two features, we can use the same method as before, but instead of drawing from the center of both cameras, we anchor the lines on the feature points in 3d space and approximate the intersection to find our camera’s position. We do this for every set of two features and remove outliers to get our final position. </p>
+            <p>To find the 3d position of a camera from any two features, we use the same method as before, but instead of drawing from the center of both cameras, we anchor the lines on the feature points in 3d space and approximate the intersection to find our camera’s position. We do this for every set of two features and remove outliers to get our final position. </p>
             
             <h3>Accounting for orientation</h3>
-            <p>To account for the orientation, we first need to find our orientation. For pitch and roll, I used an accelerometer, but finding yaw is a bit more difficult.</p>
-            <p>To find the yaw, we take any pair of matched features across two cameras, one from the central drone and another from the second drone. Then, we can use the offset in angle of the descriptors we used, such as the difference in direction of the vectors from the same descriptor, which we calculated during feature matching. This gives us the relative yaw of every drone with respect to the central drone.</p>
-            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\3.jpg">
-            <p>Accounting for yaw is not too hard, as we can rotate the images we captured from the cameras by the corresponding yaw angle before triangulating the points. </p>
-            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\4.jpg">
-            <p>To account for pitch and roll on the central drone, after triangulating the 3d position of all the features, we can then rotate their positions around the origin in accordance with the pitch and yaw to properly account for the pitch and roll. </p>
-            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\5.jpg">
-            <p>For the secondary drones, we can change the stored position of the features on the screen in accordance with the pitch and roll before triangulating the position of the camera. This effectively changes the slope of all the lines before determining their intersection point to properly account for the pitch and roll. </p>
-            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\6.jpg">
+            <p>To account for the orientation, we first need to find our orientation. To find pitch and roll, I used an ADXL345 accelerometer. </p>
+            <p>To find the yaw, we take any pair of matched features across two cameras, one from the central drone and another from the second drone. Then, we use the offset in angle of the key points to give us the relative yaw of every drone with respect to the central drone.</p>
+            <p>To account for yaw, we rotate each key point around the center of the image by the calculated yaw offset. </p>
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\11.jpg">
+            <h5>Accounting for yaw (Note that the shape is replicated in the second image)</h5>
+            
+            <p>To account for pitch and roll on the central drone, after triangulating the 3d position of all the features, we then rotate their positions around the origin in accordance with the pitch and yaw to properly account for the pitch and roll. </p>
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\12.jpg", style="width: 800px">
+            
+            <p>For the secondary drones, we rotate the lines we draw before we reverse triangulate the camera to counteract the pitch and roll of the camera. </p>
+            <img class="img-fluid" src="..\assets\imgs\Drone Rel Pos\13.jpg", style="width: 500px">
             
             <h3>Hardware</h3>
             <p>The full list of hardware used in this project are 3 RasPi 0Ws, 3 RasPi camera modules, 2 accelerometers, 2 power banks, 3 usb to micro usb cables, 3 micro SD cards, and a micro SD to usb adapter. </p>
@@ -100,11 +132,11 @@
         - <a href="https://www.amazon.com/SanDisk-2-Pack-microSDHC-Memory-2x32GB/dp/B08GY9NYRM/ref=sr_1_3?crid=1O6LZJGU106Q9&dib=eyJ2IjoiMSJ9.tk0UAe6rKAf0FakbuJisoKUomV5T1j37HI71I94y2M_0QZwoxj-Tbw4sowKCr5WH9cyxWaNy7Mp6M_TIFeIaR_qOvvHAY7o7dNKHDUPhbLF3upGURhtAnm_L4jIt9CVhJRwHXjG2nIccV6KGlFkV8OSFyigdYplNKJ5PTfbVfDw2Fj8cdMeZttrEGsuu9y9oyI03ARWcVrcQE0bjQ0P35HTuzZoyZXaxSIMG2Q2Lq6c.5OWHbjcGPRzyfdBfUICGkGpP_jsD--OYMbEoxqXcZuc&dib_tag=se&keywords=32%2Bgb%2Bmicro%2Bsd%2Bcard&qid=1721202707&sprefix=32%2Bgb%2Bmicro%2Bsd%2Bca%2Caps%2C342&sr=8-3&th=1">MicroSD</a>
         - <a href="https://www.aliexpress.com/item/1005005492821617.html?spm=a2g0o.order_list.order_list_main.5.60651802iXxuYL">MicroSD Reader</a></p>
             <p>The Raspberry Pis are used with Socket to connect to the computer and send over the camera and accelerometer data. (<a href="https://docs.google.com/document/d/1zvPyD8OOzXOKGc8JJwU0GeqYuUTja-vIca7p4PPr_i4/edit?usp=sharing">RasPi setup</a>)</p>
-            <p>The frames holding it all together are printed from <a href="https://drive.google.com/drive/folders/1yhmFWAC9WZl5KNo4NMfis7nEZxAkWpuL?usp=sharing">these .STL files</a>(with paper as spacing to keep camera and accelerometer flat). I decided against implementing the project on real drones as I would have to make my own to avoid the high costs, they introduce many problems like pid tuning and make iterating take longer and more difficult. Plus, they wouldn’t add much to the project. </p>
+            <p>The frames holding it all together are printed from <a href="https://drive.google.com/drive/folders/1yhmFWAC9WZl5KNo4NMfis7nEZxAkWpuL?usp=sharing">these .STL files</a>(with paper as spacing to keep camera and accelerometer flat and taping the camera lenses to the body as they tend to flop around). I decided against implementing the project on real drones as I would have to make my own to avoid the high costs, they introduce many problems like pid tuning and make iterating take longer and more difficult. </p>
 
             <h2>Results</h2>
-            <p>Overall, the project seemed to work pretty well. Compared to other systems, it’s a bit slow and not the most accurate, and it also doesn’t have the greatest tolerance for orientation differences, but I still think it’s quite impressive for its simplicity and cost. </p>
-            <p>In the future, it could be possible to find the 3d position of more features from any 2 drones so that the range is not limited to the central drone. The current system is also centralized, but it shouldn’t be too hard to fully decentralize it with stronger raspberry pi computers.</p>
+            <p>Overall, the project seemed to work pretty well. Compared to other systems, it’s a bit slow and not the most accurate, and it also doesn’t have the greatest tolerance for orientation differences, but I still think it’s quite impressive for its simplicity and cost, as well as the low quality RasPi cameras. </p>
+            <p>In the future, it could be possible to find the 3d position of more features from any 2 drones so that the range is not limited to the central drone. The current system is also centralized, but it shouldn’t be too hard to fully decentralize it with more powerful raspberry pi computers. </p>
         </div>
         <div class="footer">
             <p class="d-inline">Feel free to contact me about anything!</p>
