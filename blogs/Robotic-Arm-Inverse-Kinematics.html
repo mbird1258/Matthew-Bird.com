@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Matthew Bird - Robotic Arm Inverse Kinematics</title>
+    <meta name="description" content="Matthew Bird Portfolio">
+    <meta name="keywords" content="Matthew Bird, About, Portfolio">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/assets/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/blog.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm sticky-top navbar-light" id="navbar">
+    <div class="container-fluid">
+        <a href="/" class="navbar-brand">Matthew Bird</a>
+        
+        <!-- links -->
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-container" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+        <div class="navbar-collapse collapse" id="navbar-container" style>
+        <ul class="navbar-nav ms-auto" id="navbar-links">
+            <li class="nav-item">
+                <a id="home-nav" href="/" class="nav-link theme2">Home</a>
+            </li>
+            
+            <li class="nav-item">
+                <a id="blogs-nav" href="/blogs.html" class="nav-link theme2">Blogs</a>
+            </li>
+
+            <li class="nav-item">
+                <a id="about-nav" href="/about.html" class="nav-link theme2">About</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+
+
+    <!-- Content -->
+    <div class="content col-md-8 offset-md-2 col-12 m-auto">
+        <div class="header">
+            <h1 class="title d-inline">Robotic Arm Inverse Kinematics</h1>
+            <h6 class="tags d-inline">[Robotics]</h6>
+            <h3 class="synopsis">Math behind getting the angles of each joint of a robotic arm from the desired end position. </h3>
+            <h6 class="author d-inline">Matthew Bird</h6>
+            <h6 class="date d-inline">Sun, Nov 11, 2024</h6>
+        </div>
+        <div class="main">
+            <iframe src="https://www.geogebra.org/calculator/vapprkva?embed" width="100%" style="min-height:600px; padding:0px 0px 22px" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+            <h4>Geogebra Demo: <a href="https://www.geogebra.org/calculator/vapprkva">https://www.geogebra.org/calculator/vapprkva</a>
+            <h4>Github Repository: <a href="https://github.com/mbird1258/Robotic-Arm-Inverse-Kinematics/">https://github.com/mbird1258/Robotic-Arm-Inverse-Kinematics/</a></h4>
+            
+            <h2>Introduction</h2>
+            <p>This blog post is about figuring out the inverse kinematics behind finding the angles required for each of the 6 axes of a 6 axis robotic arm. </p>
+            <p>I used cartesian coordinates, with the origin at the center of the base of the robotic arm and the positive y-axis as the front of the robotic arm, for the math. The first axis is the base axis, rotating in the yaw direction like a lazy susan. The second and third axes rotate in the pitch direction. These three axes give us control over the translation of our end point. The second and third axes allow the arm to reach a large circular range of positions in a 2d plane, while the first axis converts this into a sphere in 3d space. </p>
+            
+            <img class="img-fluid" src="..\assets\imgs\Robotic Arm Inverse Kinematics\1.png", style="width: 800px">
+            <h5>Coverage provided by second and third axes</h5>
+            
+            <p>The fourth, fifth, and sixth axes are dedicated to controlling the orientation of the robotic arm holder, and are pitch, yaw, and roll respectively. I chose this order of orientations because setting pitch to the fourth axis allows us to completely ignore the orientation of the third axis, setting roll to the last axis allows us to completely ignore it as it doesn’t change anything, and the fifth axis is left with yaw. </p>
+            
+            <h2>Calculations</h2>
+            <h3>Axes 4, 5, and 6</h3>
+            <p>The pitch of the axes 4, 5 and 6 has to equal the pitch of axis 4 as the pitch of axis 4 carries over to axes 5 and 6. Because we know the pitch of the axes 5 and 6, we can limit the potential positions at which the point can exist to a circle. (<a href="https://www.geogebra.org/calculator/yavmhzjd">visual</a>)</p>
+            <p>To find the radius of the circle and the position of the circle, we first find out how far away from the target point the point can be horizontally and vertically. By constructing a right angle triangle as shown below, we can find out the horizontal and vertical distance of any point from the target point. The radius will equal to the horizontal distance and the position of the center of the circle will equal the Z position of the target point (which is also the center of the sphere) subtracted by/added to the vertical distance. </p>
+            
+            <img class="img-fluid" src="..\assets\imgs\Robotic Arm Inverse Kinematics\2.png", style="width: 1000px">
+            
+            <p>To find the exact point, we can make use of the desired yaw of the final point and find the corresponding point on the circle as shown below. </p>
+            
+            <img class="img-fluid" src="..\assets\imgs\Robotic Arm Inverse Kinematics\3.png", style="width: 1200px">
+            
+            <p>We repeat the same process to get to the point at axis 4, except this time we use the yaw of the first axis. </p>
+            
+            <img class="img-fluid" src="..\assets\imgs\Robotic Arm Inverse Kinematics\4.png", style="width: 1200px">
+            
+            <h3>Axes 1, 2, and 3</h3>
+            <p>To get the yaw value of axis one, since the yaw is transferred to axes 2 and 3, we can just take the arctan of the position of axis 4 to get our yaw. </p>
+            
+            <img class="img-fluid" src="..\assets\imgs\Robotic Arm Inverse Kinematics\5.png", style="width: 1000px">
+            
+            <p>To get the members of the robotic arm to their correct positions, we need to get the angles ⍺ & β from the image below. Finding the angles directly allows us to <a href="https://docs.google.com/document/u/0/d/1Np-hgKrQbotTc_-zsZkRBA5jJFR4E49Fd7QHk0cFpcA/edit">avoid directly finding the coordinates of B</a>, saving a lot of time and effort.</p>
+            
+            <img class="img-fluid" src="..\assets\imgs\Robotic Arm Inverse Kinematics\6.png", style="width: 1000px">
+            
+            <p>To do so, we can construct a triangle between (0,0), (x1, y1), and B. A quick application of the pythagorean theorem, cosine rule, and tangent function gives us the following values.</p>
+            
+            <img class="img-fluid" src="..\assets\imgs\Robotic Arm Inverse Kinematics\7.png", style="width: 1600px">
+            
+            <p>With this, we have all the values we need to provide to the motors in our robotic arm for achieving any position and rotation in 3d space. </p>
+        </div>
+        <div class="footer">
+            <p class="d-inline">Feel free to contact me about anything!</p>
+            <a href="/about.html"><p class="d-inline">Contacts</p></a>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="row fixed-bottom" id="page-footer">
+            <div class="col-md-4 offset-md-4 text-center">
+                
+                <a href="/">© Matthew-Bird.com</a>
+            </div>
+            <div class="col-md-4 text-end">
+                <p>Made by Matthew Bird</p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
