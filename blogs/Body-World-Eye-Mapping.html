@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WC7EZ78F0Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WC7EZ78F0Z');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Matthew Bird - Body World Eye Mapping</title>
+    <meta name="description" content="Matthew Bird Portfolio">
+    <meta name="keywords" content="Matthew Bird, About, Portfolio">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/assets/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/blog.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm sticky-top navbar-light" id="navbar">
+    <div class="container-fluid">
+        <a href="/" class="navbar-brand">Matthew Bird</a>
+        
+        <!-- links -->
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-container" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+        <div class="navbar-collapse collapse" id="navbar-container" style>
+        <ul class="navbar-nav ms-auto" id="navbar-links">
+            <li class="nav-item">
+                <a id="home-nav" href="/" class="nav-link theme2">Home</a>
+            </li>
+            
+            <li class="nav-item">
+                <a id="blogs-nav" href="/blogs.html" class="nav-link theme2">Blogs</a>
+            </li>
+
+            <li class="nav-item">
+                <a id="about-nav" href="/about.html" class="nav-link theme2">About</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+
+
+    <!-- Content -->
+    <div class="content col-md-8 offset-md-2 col-12 m-auto">
+        <div class="header">
+            <h1 class="title d-inline">Body World Eye Mapping</h1>
+            <h6 class="tags d-inline">[Computer Vision]</h6>
+            <h3 class="synopsis">Tracking, Matching, and Mapping People, Volleyballs, and Eyes in 3D</h3>
+            <h6 class="author d-inline">Matthew Bird</h6>
+            <h6 class="date d-inline">Thu, Feb 13, 2025</h6>
+        </div>
+        <div class="main">
+            <div class="embed-responsive embed-responsive-16by9" style="overflow:hidden;">
+                <iframe class="embed-responsive-item d-inline" src="https://www.youtube.com/embed/EAv7olLFaek" style="width:480px; height:270px" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item d-inline" src="https://www.youtube.com/embed/oWKc6HfKZ_M" style="width:480px; height:270px" allowfullscreen></iframe>
+            </div>
+            <h4>Demo Vids: <a href="https://youtu.be/EAv7olLFaek">https://youtu.be/EAv7olLFaek</a>, <a href="https://youtu.be/oWKc6HfKZ_M">https://youtu.be/oWKc6HfKZ_M</a></h4>
+            <h4>Github Repository: <a href="https://github.com/mbird1258/Body-Matching">https://github.com/mbird1258/Body-Matching</a>, <a href="https://github.com/mbird1258/Volleyball-Tracking">https://github.com/mbird1258/Volleyball-Tracking</a></h4>
+            
+            <h2>Premise</h2>
+            <p>My plan for this project was to make use of 2 cameras and a variety of methods to detect/track objects in videos in order to map them in 3D. This way, it would be possible to make a 3D video that could be viewed frame by frame or as in the form of a continuous video in order to analyse volleyball games. This was largely motivated by my interest in and good body type for volleyball but terrible skills to accompany. </p>
+            
+            <h2>Recording the Video</h2>
+            <p>The stand used was pretty flimsy and cracked in a few areas, which ended up causing me quite a bit of trouble. For aligning the frames of the video, I suggest taking a fast movement such as an eye blinking to align the two videos. In addition to this, it can be useful to run the following command to show the exact time and frame of a video (at least for quicktime player on mac): </p>
+            <p>ffmpeg -i input.mp4 -c copy -timecode 00:00:00:00 output.mp4</p>
+            
+            <p>It’s important to make sure that both videos have the same framerate as well. The frame rate can be changed with the following command:</p>
+            <p>ffmpeg -i input.mp4 -c copy -r [fps] output.mp4</p>
+            
+            <h2>Body</h2>
+            <p>The body detection was done through the use of <a href="https://github.com/open-mmlab/mmpose/tree/main/projects/rtmo">RTMO</a>, which I found to be much more robust than other libraries like mediapipe. It was a bit of a pain to set up until I found <a href="https://github.com/Tau-J/rtmlib">RTMLib</a>(linked on the RTMO github which I annoyingly missed), but using RTMLib was simple enough. </p>
+            
+            <h5>Image of RTMO applied to image of game</h5>
+            <img class="img-fluid" src="../assets/imgs/Body World Eye Mapping/1.png", style="width: 800px">
+            
+            <p>To accomplish body matching, I took each body and normalized the average of the positions of each joint to 0. Then, I calculated the smallest distance between corresponding joints between each body in the first image and each body in the second image and took the match with the lowest error. This works largely because the distance between the two cameras was largely insubstantial compared to the distance the bodies were from the cameras, meaning that the rotational and scaling effect of a different camera position was largely minimized. </p>
+            
+            <h5>Matched bodies</h5>
+            <img class="img-fluid" src="../assets/imgs/Body World Eye Mapping/2.png", style="width: 400px">
+            <img class="img-fluid" src="../assets/imgs/Body World Eye Mapping/3.png", style="width: 400px">
+            <br/>
+            <img class="img-fluid" src="../assets/imgs/Body World Eye Mapping/4.png", style="width: 400px">
+            <img class="img-fluid" src="../assets/imgs/Body World Eye Mapping/5.png", style="width: 400px">
+            <br/>
+            <img class="img-fluid" src="../assets/imgs/Body World Eye Mapping/6.png", style="width: 400px">
+            <img class="img-fluid" src="../assets/imgs/Body World Eye Mapping/7.png", style="width: 400px">
+            <br/>
+            <img class="img-fluid" src="../assets/imgs/Body World Eye Mapping/8.png", style="width: 400px">
+            <img class="img-fluid" src="../assets/imgs/Body World Eye Mapping/9.png", style="width: 400px">
+            
+            <h2>Volleyball</h2>
+            <p>In order to track the volleyball, I went through a lot of solutions online, including a large amount of machine learning models on roboflow and some algorithms online on GitHub, but they were all either not robust enough or I encountered a lot of issues implementing them. </p>
+            
+            <p>In the end, I decided to come up with my own solution, which involved creating a mask of all moving objects in the frame, creating a mask of all objects fitting within the correct color range, and taking the largest contour/blob of pixels that satisfy both conditions. More specifically, to detect motion within the image, I took the median of the last 60 or so frames, giving us an image of the court without any people or balls, and took the difference in colour between this median and the current frame. </p>
+            
+            
+            <h5>Input</h5>
+            <img class="img-fluid" src="../assets/imgs/Body World Eye Mapping/10.png", style="width: 400px">
+            
+            <h5>Median</h5>
+            <img class="img-fluid" src="../assets/imgs/Body World Eye Mapping/11.png", style="width: 400px">
+            
+            
+            <h5>Movement mask</h5>
+            <img class="img-fluid" src="../assets/imgs/Body World Eye Mapping/12.png", style="width: 400px">
+            
+            
+            <h5>Colour Mask</h5>
+            <img class="img-fluid" src="../assets/imgs/Body World Eye Mapping/13.png", style="width: 400px">
+            
+            
+            <h5>Combined Mask</h5>
+            <img class="img-fluid" src="../assets/imgs/Body World Eye Mapping/14.png", style="width: 400px">
+            
+            
+            <h5>Ball Detection</h5>
+            <img class="img-fluid" src="../assets/imgs/Body World Eye Mapping/15.png", style="width: 400px">
+            <img class="img-fluid" src="../assets/imgs/Body World Eye Mapping/16.png", style="width: 400px">
+            
+            
+            <h2>Eyes</h2>
+            <h3>Finding the center of the eye</h3>
+            <p>I had originally intended to use the eye matching for each of the individual players on the court, but considering that almost all the players’ eyes are hidden by their heads and the resolution and robustness of the ML algorithms I used would lead to results that are too inconsistent to rely upon. However, I still tried to implement it as a sort of separate mini-project to track the position of the eye’s focus in short range. </p>
+            
+            <p>The math behind finding the centers of the spheres isn’t too difficult. The formula for a sphere, given that the center of the sphere is (x,y,z), is:</p>
+            <p><math>
+                <msup>
+                    <mrow>
+                        <mo>(</mo>
+                        <msub>
+                            <mi>x</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mo>–</mo>
+                        <mi>x</mi>
+                        <mo>)</mo>
+                    </mrow>
+                    <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <msup>
+                    <mrow>
+                        <mo>(</mo>
+                        <msub>
+                            <mi>y</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mo>–</mo>
+                        <mi>y</mi>
+                        <mo>)</mo>
+                    </mrow>
+                    <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <msup>
+                    <mrow>
+                        <mo>(</mo>
+                        <msub>
+                            <mi>z</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mo>–</mo>
+                        <mi>z</mi>
+                        <mo>)</mo>
+                    </mrow>
+                    <mn>2</mn>
+                </msup>
+                <mo>=</mo>
+                <msup>
+                    <mi>r</mi>
+                    <mn>2</mn>
+                </msup>
+            </math></p>
+            
+            <p>By expanding, we get the following equation:</p>
+            <p><math>
+                <msubsup>
+                    <mi>x</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>–</mo>
+                <mn>2</mn>
+                <mi>x</mi>
+                <msub>
+                    <mi>x</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <msup>
+                    <mi>x</mi>
+                    <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>–</mo>
+                <mn>2</mn>
+                <mi>y</mi>
+                <msub>
+                    <mi>y</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <msup>
+                    <mi>y</mi>
+                    <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <msubsup>
+                    <mi>z</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>–</mo>
+                <mn>2</mn>
+                <mi>z</mi>
+                <msub>
+                    <mi>z</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <msup>
+                    <mi>z</mi>
+                    <mn>2</mn>
+                </msup>
+                <mo>=</mo>
+                <msup>
+                    <mi>r</mi>
+                    <mn>2</mn>
+                </msup>
+            </math></p>
+            
+            <p>Since we are solving for x, y, and z, we can plug in values from a point we know lies on the surface of the sphere (thus satisfying the equation) in for x1, y1, and z1, thus allowing us to treat x1, y1, and z1 as constants. Solving for x, y, and z on the left, we get:</p>
+            <p><math>
+                <mn>2</mn>
+                <mi>x</mi>
+                <msub>
+                    <mi>x</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>–</mo>
+                <msup>
+                    <mi>x</mi>
+                    <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>y</mi>
+                <msub>
+                    <mi>y</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>–</mo>
+                <msup>
+                    <mi>y</mi>
+                    <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>z</mi>
+                <msub>
+                    <mi>z</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>–</mo>
+                <msup>
+                    <mi>z</mi>
+                    <mn>2</mn>
+                </msup>
+                <mo>=</mo>
+                <mo>–</mo>
+                <msup>
+                    <mi>r</mi>
+                    <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <msubsup>
+                    <mi>x</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>+</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>+</mo>
+                <msubsup>
+                    <mi>z</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+            </math></p>
+            
+            <p>Crucially, since we want to remove the x2, y2, z2, and r2 from the equation, if we now consider the 2 equations defining 2 points and subtract them from each other, we get:</p>
+            <p><math>
+                <mn>2</mn>
+                <mi>x</mi>
+                <msub>
+                    <mi>x</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>y</mi>
+                <msub>
+                    <mi>y</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>z</mi>
+                <msub>
+                    <mi>z</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>x</mi>
+                <msub>
+                    <mi>x</mi>
+                    <mn>2</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>y</mi>
+                <msub>
+                    <mi>y</mi>
+                    <mn>2</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>z</mi>
+                <msub>
+                    <mi>z</mi>
+                    <mn>2</mn>
+                </msub>
+                <mo>=</mo>
+                <msubsup>
+                    <mi>x</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>+</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>+</mo>
+                <msubsup>
+                    <mi>z</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>–</mo>
+                <msubsup>
+                    <mi>x</mi>
+                    <mn>2</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>–</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mn>2</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>–</mo>
+                <msubsup>
+                    <mi>z</mi>
+                    <mn>2</mn>
+                    <mn>2</mn>
+                </msubsup>
+            </math></p>
+            
+            <p>Since we have 3 unknowns, we need 3 equations, thus requiring 4 points. </p>
+            <p><math>
+                <mn>2</mn>
+                <mi>x</mi>
+                <msub>
+                    <mi>x</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>y</mi>
+                <msub>
+                    <mi>y</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>z</mi>
+                <msub>
+                    <mi>z</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>x</mi>
+                <msub>
+                    <mi>x</mi>
+                    <mn>2</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>y</mi>
+                <msub>
+                    <mi>y</mi>
+                    <mn>2</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>z</mi>
+                <msub>
+                    <mi>z</mi>
+                    <mn>2</mn>
+                </msub>
+                <mo>=</mo>
+                <msubsup>
+                    <mi>x</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>+</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>+</mo>
+                <msubsup>
+                    <mi>z</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>–</mo>
+                <msubsup>
+                    <mi>x</mi>
+                    <mn>2</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>–</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mn>2</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>–</mo>
+                <msubsup>
+                    <mi>z</mi>
+                    <mn>2</mn>
+                    <mn>2</mn>
+                </msubsup>
+            </math></p>
+            <p><math>
+                <mn>2</mn>
+                <mi>x</mi>
+                <msub>
+                    <mi>x</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>y</mi>
+                <msub>
+                    <mi>y</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>z</mi>
+                <msub>
+                    <mi>z</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>x</mi>
+                <msub>
+                    <mi>x</mi>
+                    <mn>3</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>y</mi>
+                <msub>
+                    <mi>y</mi>
+                    <mn>3</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>z</mi>
+                <msub>
+                    <mi>z</mi>
+                    <mn>3</mn>
+                </msub>
+                <mo>=</mo>
+                <msubsup>
+                    <mi>x</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>+</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>+</mo>
+                <msubsup>
+                    <mi>z</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>–</mo>
+                <msubsup>
+                    <mi>x</mi>
+                    <mn>3</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>–</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mn>3</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>–</mo>
+                <msubsup>
+                    <mi>z</mi>
+                    <mn>3</mn>
+                    <mn>2</mn>
+                </msubsup>
+            </math></p>
+            <p><math>
+                <mn>2</mn>
+                <mi>x</mi>
+                <msub>
+                    <mi>x</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>y</mi>
+                <msub>
+                    <mi>y</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>z</mi>
+                <msub>
+                    <mi>z</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>x</mi>
+                <msub>
+                    <mi>x</mi>
+                    <mn>4</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>y</mi>
+                <msub>
+                    <mi>y</mi>
+                    <mn>4</mn>
+                </msub>
+                <mo>+</mo>
+                <mn>2</mn>
+                <mi>z</mi>
+                <msub>
+                    <mi>z</mi>
+                    <mn>4</mn>
+                </msub>
+                <mo>=</mo>
+                <msubsup>
+                    <mi>x</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>+</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>+</mo>
+                <msubsup>
+                    <mi>z</mi>
+                    <mn>1</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>–</mo>
+                <msubsup>
+                    <mi>x</mi>
+                    <mn>4</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>–</mo>
+                <msubsup>
+                    <mi>y</mi>
+                    <mn>4</mn>
+                    <mn>2</mn>
+                </msubsup>
+                <mo>–</mo>
+                <msubsup>
+                    <mi>z</mi>
+                    <mn>4</mn>
+                    <mn>2</mn>
+                </msubsup>
+            </math></p>
+            
+            <p>Writing this in matrix form such that we can solve it, we get the following:</p>
+            <p><math>
+                <mo>[</mo>
+                <mtable columnalign="center center center center center">
+                    <mtr>
+                        <mtd>
+                            <mrow>
+                                <mn>2</mn>
+                                <mo>(</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <mo>–</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msub>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                        <mtd>
+                            <mrow>
+                                <mn>2</mn>
+                                <mo>(</mo>
+                                <msub>
+                                    <mi>y</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <mo>–</mo>
+                                <msub>
+                                    <mi>y</mi>
+                                    <mn>2</mn>
+                                </msub>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                        <mtd>
+                            <mrow>
+                                <mn>2</mn>
+                                <mo>(</mo>
+                                <msub>
+                                    <mi>z</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <mo>–</mo>
+                                <msub>
+                                    <mi>z</mi>
+                                    <mn>2</mn>
+                                </msub>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                        <mtd>
+                            <mi>|</mi>
+                        </mtd>
+                        <mtd>
+                            <mrow>
+                                <msubsup>
+                                    <mi>x</mi>
+                                    <mn>1</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>+</mo>
+                                <msubsup>
+                                    <mi>y</mi>
+                                    <mn>1</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>+</mo>
+                                <msubsup>
+                                    <mi>z</mi>
+                                    <mn>1</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>–</mo>
+                                <msubsup>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>–</mo>
+                                <msubsup>
+                                    <mi>y</mi>
+                                    <mn>2</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>–</mo>
+                                <msubsup>
+                                    <mi>z</mi>
+                                    <mn>2</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mrow>
+                                <mn>2</mn>
+                                <mo>(</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <mo>–</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>3</mn>
+                                </msub>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                        <mtd>
+                            <mrow>
+                                <mn>2</mn>
+                                <mo>(</mo>
+                                <msub>
+                                    <mi>y</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <mo>–</mo>
+                                <msub>
+                                    <mi>y</mi>
+                                    <mn>3</mn>
+                                </msub>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                        <mtd>
+                            <mrow>
+                                <mn>2</mn>
+                                <mo>(</mo>
+                                <msub>
+                                    <mi>z</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <mo>–</mo>
+                                <msub>
+                                    <mi>z</mi>
+                                    <mn>3</mn>
+                                </msub>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                        <mtd>
+                            <mi>|</mi>
+                        </mtd>
+                        <mtd>
+                            <mrow>
+                                <msubsup>
+                                    <mi>x</mi>
+                                    <mn>1</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>+</mo>
+                                <msubsup>
+                                    <mi>y</mi>
+                                    <mn>1</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>+</mo>
+                                <msubsup>
+                                    <mi>z</mi>
+                                    <mn>1</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>–</mo>
+                                <msubsup>
+                                    <mi>x</mi>
+                                    <mn>3</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>–</mo>
+                                <msubsup>
+                                    <mi>y</mi>
+                                    <mn>3</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>–</mo>
+                                <msubsup>
+                                    <mi>z</mi>
+                                    <mn>3</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                    <mtr>
+                        <mtd>
+                            <mrow>
+                                <mn>2</mn>
+                                <mo>(</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <mo>–</mo>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>4</mn>
+                                </msub>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                        <mtd>
+                            <mrow>
+                                <mn>2</mn>
+                                <mo>(</mo>
+                                <msub>
+                                    <mi>y</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <mo>–</mo>
+                                <msub>
+                                    <mi>y</mi>
+                                    <mn>4</mn>
+                                </msub>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                        <mtd>
+                            <mrow>
+                                <mn>2</mn>
+                                <mo>(</mo>
+                                <msub>
+                                    <mi>z</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <mo>–</mo>
+                                <msub>
+                                    <mi>z</mi>
+                                    <mn>4</mn>
+                                </msub>
+                                <mo>)</mo>
+                            </mrow>
+                        </mtd>
+                        <mtd>
+                            <mi>|</mi>
+                        </mtd>
+                        <mtd>
+                            <mrow>
+                                <msubsup>
+                                    <mi>x</mi>
+                                    <mn>1</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>+</mo>
+                                <msubsup>
+                                    <mi>y</mi>
+                                    <mn>1</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>+</mo>
+                                <msubsup>
+                                    <mi>z</mi>
+                                    <mn>1</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>–</mo>
+                                <msubsup>
+                                    <mi>x</mi>
+                                    <mn>4</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>–</mo>
+                                <msubsup>
+                                    <mi>y</mi>
+                                    <mn>4</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                                <mo>–</mo>
+                                <msubsup>
+                                    <mi>z</mi>
+                                    <mn>4</mn>
+                                    <mn>2</mn>
+                                </msubsup>
+                            </mrow>
+                        </mtd>
+                    </mtr>
+                </mtable>
+                <mo>]</mo>
+            </math></p>
+            
+            <p>Solving this matrix then returns the coordinates of the center of the sphere. Doing this for every combination of 4 points out of the points we have on the surface of the eye and applying RANSAC with the radius being constrained to around 1.15 cm gives us a pretty good approximation of the center of the eye. </p>
+            
+            <p>The points of the surface of the eye can be determined with two cameras, by first using machine learning to find corresponding points on the eye on each image, then finding the intersection of the corresponding two lines drawn in 3D space. </p>
+            
+            <h3>Iris triangulation</h3>
+            <p>In order to find the center of the iris, we once again employ machine learning to detect the position of the iris on screen in images from two cameras and follow the same procedure in the above paragraph to triangulate the position of the iris. </p>
+            
+            <h3>Focus triangulation</h3>
+            <p>In order to find the point in 3D space that the person is focusing on, we can draw a line from the center of each eye to the corresponding iris position in 3D space, then find the intersection between these two lines. </p>
+            
+            <h3>Results</h3>
+            <p>It ended up not working :( . None of the off the shelf face landmarking machine learning models were capable of finding points on my eyes that were accurate enough across both images to triangulate in 3d and use to get a clean sphere. Every time, I would end up with a sphere roughly two times too big for a human eye, and oftentimes the eye landmarks wouldn’t even be on my eye in the 2d images. Overall, I tried multiple models including mediapipe, dlib, openface, retinaface, MTCNN, SPIGA, yolov8-face, RTMPose wholebody, and more, and none seemed to work well enough. The fact that these models aren’t perfectly accurate and my method to triangulate focus from images has a very low tolerance for inaccuracy led to results that were unfortunately completely unusable. I also tried to use a <a href="https://jekel.me/2015/Least-Squares-Sphere-Fit/">different sphere finding algorithm</a>, and it worked quite well but still couldn’t overcome the inaccurate eye landmarks and couldn’t constrain the eye radius like RANSAC could. </p>
+            
+            <h2>Mapping Court Points</h2>
+            <p>The court points’ position on each image was determined through manual input, which I decided would be best given that it only needs to be done once for a long video. In order to get the full court when most of the court was cropped out by the restricted cameras’ field of views, I estimated each point defining the court from just 3. This is done by manually inputting 3 of the court points and finding their position in 3D, rotating the 3 points to have the same z value in space, rotating and translating hard coded 3d points that define the entire volleyball court such that the 3 inputted points and the corresponding hard coded points align, and then reversing the rotation we performed to make the 3 points have the same z value in space. </p>
+            
+            <h2>Floundering Around With Mapping</h2>
+            <p>Originally, mapping shouldn’t have been much of an issue. Given two images with a field of views of both and the offset in position between the two, using the formula found <a href="https://paulbourke.net/geometry/pointlineplane/">here(shortest line between two lines in 3D)</a>. Thus, since we have the matched points of each body’s joints and the volleyball, we could just find their most likely position in 3D space. However, this didn’t really go as planned. </p>
+            
+            <p>The first hurdle was finding the field of view of the ipad and iphone that I used. I ended up sinking hours into different methods before finding <a href="https://www.panohelp.com/lensfov.html">this</a>, which I think gave the best results. I also spent an hour or two checking the camera offset of the cameras in my camera setup over and over again, changing absolutely nothing. </p>
+            
+            <p>The next hurdle was the shoddy 3D printed setup I used for positioning the cameras stationary relative to each other, which ended up leaving one camera’s orientation different from the other when the code assumed they were identical. This tiny offset in rotation led to a large offset in position of pixels in the image, which was further exacerbated by the large distance between the camera and the bodies and the low distance between cameras. </p>
+            
+            <p>In order to solve this, I used something called a homography matrix. The homography matrix effectively transforms, rotates, shears, and warps the image such that given a rectangle can be remapped to any quadrilateral. This allows the changing of the perspective of an image, thus why it is sometimes called the perspective projection matrix, which if calibrated correctly could solve any problems to do with rotation or incorrect positioning of the second camera. To solve for the homography matrix which has 8 degrees of freedom, we need 4 points on the image and the 4 new points we want to obtain. This is obtained by finding the position of <a href="https://www.geogebra.org/3d/k7waft2t">court points in 3D</a> and projecting those onto the image plane of the second camera as the target points. Then, using those target points and the originally found points of the court on the image, we can <a href="https://math.stackexchange.com/a/2619023">calculate</a> a homography matrix. Unfortunately, this only improved the results and failed to magically solve all my problems. </p>
+            
+            <p>My only possible explanation remaining for the triangulation still not working is that the terrible recording setup, far distance of the court from the camera, relatively small distance between the two cameras, and natural inaccuracy all work in conjunction to make the project fail. </p>
+            
+            <h2>Conclusion</h2>
+            <p>The original intent of the project - mapping an entire volleyball game in 3D - failed. Regardless, the project is up on GitHub, as others can use it as a reference, and if hardware was really the issue, the software is probably somewhat correct. In addition to this, the project successfully accomplished tracking of volleyballs and matching bodies between two images, which each have been posted as individual GitHub projects too. Volleyball Body matching Eye focus mapping</p>
+            
+            <p>In the future I might come back to this project with a proper recording setup since it has quite a bit of potential in volleyball analytics, as I had originally planned to make a nice frontend for it and have it calculate the ball velocity and acceleration, body joint velocity and acceleration, jump height, spike speed, compare bumping/setting/spiking form etc. </p>
+        </div>
+        <div class="footer">
+            <p class="d-inline">Feel free to contact me about anything!</p>
+            <a href="/about.html"><p class="d-inline">Contacts</p></a>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="row fixed-bottom" id="page-footer">
+            <div class="col-md-4 offset-md-4 text-center">
+                
+                <a href="/">© Matthew-Bird.com</a>
+            </div>
+            <div class="col-md-4 text-end">
+                <p>Made by Matthew Bird</p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
