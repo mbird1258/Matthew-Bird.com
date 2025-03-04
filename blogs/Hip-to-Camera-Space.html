@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WC7EZ78F0Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WC7EZ78F0Z');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Matthew Bird - Hip to Camera Space</title>
+    <meta name="description" content="Matthew Bird Portfolio">
+    <meta name="keywords" content="Matthew Bird, About, Portfolio">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/assets/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/blog.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm sticky-top navbar-light" id="navbar">
+    <div class="container-fluid">
+        <a href="/" class="navbar-brand">Matthew Bird</a>
+        
+        <!-- links -->
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-container" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+        <div class="navbar-collapse collapse" id="navbar-container" style>
+        <ul class="navbar-nav ms-auto" id="navbar-links">
+            <li class="nav-item">
+                <a id="home-nav" href="/" class="nav-link theme2">Home</a>
+            </li>
+            
+            <li class="nav-item">
+                <a id="blogs-nav" href="/blogs.html" class="nav-link theme2">Blogs</a>
+            </li>
+
+            <li class="nav-item">
+                <a id="about-nav" href="/about.html" class="nav-link theme2">About</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+
+
+    <!-- Content -->
+    <div class="content col-md-8 offset-md-2 col-12 m-auto">
+        <div class="header">
+            <h1 class="title d-inline">Transforming Body Pose Coordinates From Hip Space to Camera Space</h1>
+            <h6 class="tags d-inline">[Computer Vision]</h6>
+            <h6 class="tags d-inline">[Machine Learning]</h6>
+            <h3 class="synopsis">Taking 3D Pose Model Outputs Centered Around the Hips and Finding the Transformation to Make it Centered Around the Camera Instead</h3>
+            <h6 class="author d-inline">Matthew Bird</h6>
+            <h6 class="date d-inline">Tue, Mar 4, 2025</h6>
+        </div>
+        <div class="main">
+            <img class="img-fluid" src="..\assets\imgs\Hip to Camera Space\0.png">
+            
+            <h4>Github Repository: <a href="https://github.com/mbird1258/3D-Pose-Camera-to-Hip-Space">https://github.com/mbird1258/3D-Pose-Camera-to-Hip-Space</a></h4>
+            
+            <h2>Premise</h2>
+            <p>I’ve always been somewhat annoyed that many of the off-the-shelf 3D pose models, such as <a href="https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker">mediapipe</a>, return 3D pose coordinates that are centered around the hips, as I feel that they become almost impossible to build off of since camera space coordinates are more useful in 99% of circumstances. Thus, my plan for this project was to create an algorithm that finds the translation in 3D space that moves a body from hip space into camera space. </p>
+            
+            <h2>Instructions for Setup</h2>
+            <p>Download pose landmarker <a href="https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker/python">here</a> and rename to pose_landmarker.task</p>
+            <p>Download model <a href="https://bit.ly/metrabs_l">here</a> and rename folder to model</p>
+            
+            <h2>Fitting 3D Coordinates to set of 3D Lines</h2>
+            <p>Our end goal is to have our body’s pose represented in 3D space with the origin of 3D space being our camera. Thus, we can place our camera at (0,0,0), with +x direction representing right, +y representing up, and +z representing forward. Using this, we can plot our 2D pose coordinates on our screen in 3D on the camera’s image plane. </p>
+            <img class="img-fluid" src="..\assets\imgs\Hip to Camera Space\1.gif">
+            <p>Since we know that our 2D pose is the projection of the 3D pose onto the image plane, each point in our 3D pose must lie on the line starting from (0,0,0) (the camera’s position) and going through the corresponding 2D pose point on the image plane. </p>
+            <img class="img-fluid" src="..\assets\imgs\Hip to Camera Space\0.png">
+            <p>By using the offset between 2 joints in our 3D pose, (<math><msub><mi>dx</mi><mn>2</mn></msub></math>, <math><msub><mi>dy</mi><mn>2</mn></msub></math>, <math><msub><mi>dz</mi><mn>2</mn></msub></math>), we can fit the line segment that represents this to our lines starting from (0,0,0) and passing through the coordinates on the image plane representing our first and second joints, (<math><msub><mi>x</mi><mn>1</mn></msub></math>, <math><msub><mi>y</mi><mn>1</mn></msub></math>, <math><mi>z</mi></math>) and (<math><msubsup><mi>x</mi><mn>1</mn><mi>'</mi></msubsup></math>, <math><msubsup><mi>y</mi><mn>1</mn><mi>'</mi></msubsup></math>, <math><mi>z</mi></math>). We do this by projecting our line segment and 2 lines onto the <math><mi>xz</mi></math> plane and doing the following operations:</p>
+            <img class="img-fluid" src="..\assets\imgs\Hip to Camera Space\2.jpg">
+            <p>After this, we can do the same for the projection onto the <math><mi>yz</mi></math> plane, giving us our final (<math><msub><mi>x</mi><mn>2</mn></msub></math>, <math><msub><mi>y</mi><mn>2</mn></msub></math>, <math><msub><mi>z</mi><mn>2</mn></msub></math>) and (<math><msubsup><mi>x</mi><mn>2</mn><mi>'</mi></msubsup></math>, <math><msubsup><mi>y</mi><mn>2</mn><mi>'</mi></msubsup></math>, <math><msubsup><mi>z</mi><mn>2</mn><mi>'</mi></msubsup></math>) representing the 3D positions of the joints around the camera. The translation to get from (<math><msub><mi>x</mi><mn>1</mn></msub></math>, <math><msub><mi>y</mi><mn>1</mn></msub></math>, <math><mi>z</mi></math>) to (<math><msub><mi>x</mi><mn>2</mn></msub></math>, <math><msub><mi>y</mi><mn>2</mn></msub></math>, <math><mi>z</mi></math>) given by (<math><msub><mi>x</mi><mn>1</mn></msub><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub></math>, <math><msub><mi>y</mi><mn>1</mn></msub><mo>-</mo><msub><mi>y</mi><mn>2</mn></msub></math>, <math><msub><mi>z</mi><mn>1</mn></msub><mo>-</mo><msub><mi>z</mi><mn>2</mn></msub></math>) can then be used to translate all of our 3D pose’s points from hip space to camera space. The final results of alignment can be seen <a href="https://www.geogebra.org/calculator/rz5tpm7b">here</a>. </p>
+            
+            <h2>Calibrating Camera View Depth</h2>
+            <p>The above derivation of the translation to move from hip space to camera space requires a value, <math><mi>z</mi></math>, that we do not have yet, which represents the distance from the camera to the image plane. </p>
+            <h3>Attempt 1</h3>
+            <p>In the first attempt, I made use of the fact that projecting onto the <math><mi>xz</mi></math> plane gave numbers for both <math><msub><mi>x</mi><mn>2</mn></msub></math> and <math><msub><mi>z</mi><mn>2</mn></msub></math>, and projecting onto the <math><mi>yz</mi></math> plane gave numbers for both <math><msub><mi>y</mi><mn>2</mn></msub></math> and <math><msub><mi>z</mi><mn>2</mn></msub></math>. Thus, we could equate the two formulas for <math><msub><mi>z</mi><mn>2</mn></msub></math> and solve for <math><mi>z</mi></math>. The geogebra implementation of this is linked <a href="https://www.geogebra.org/calculator/mgqds25s">here</a>, but after implementing it, I found that it was way too error prone and would return essentially completely random values of <math><mi>z</mi></math>. </p>
+            <img class="img-fluid" src="..\assets\imgs\Hip to Camera Space\3.jpg">
+            <h3>Attempt 2</h3>
+            <p>In the second attempt, I used scipy’s optimize module to find the value for <math><mi>z</mi></math> that would minimize the error of the fitted 3D pose to the lines. However, I once again found that it was way too error prone and returned highly inaccurate values. </p>
+            <h3>Attempt 3</h3>
+            <p>In the third attempt, I made use of <a href="https://istvansarandi.com/eccv22_demo/">this 3D pose model</a>(that took me ages of digging to find) to find the 2D and 3D pose of the bodies in a scene. This differs from other models like mediapipe’s as it directly returns the 3D pose in camera space, thus allowing me to find the value of z that would minimize the distance of the 3D pose from the lines starting at (0,0,0) and going through the 2D pose on the image plane. The drawbacks to this model are that it seems to take ages to load and run, and thus it cannot really be used to find the 3D pose in camera space for every frame, but for our purposes this is perfect as we only need to run it once for a certain model of camera to find the distance between the camera’s origin and its image plane, since this distance should remain constant across any video. </p>
+            
+            <h2>Conclusion</h2>
+            <p>I’m extremely happy with how this project turned out. I managed to achieve two long standing goals for myself: getting 3D pose positions in camera space, and finding the distance between a camera and its image plane automatically - issues that I was facing for quite some time now but were seemingly overlooked when they seemed like such fundamental problems to solve. </p>
+        </div>
+        <div class="footer">
+            <p class="d-inline">Feel free to contact me about anything!</p>
+            <a href="/about.html"><p class="d-inline">Contacts</p></a>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="row fixed-bottom" id="page-footer">
+            <div class="col-md-4 offset-md-4 text-center">
+                
+                <a href="/">© Matthew-Bird.com</a>
+            </div>
+            <div class="col-md-4 text-end">
+                <p>Made by Matthew Bird</p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
