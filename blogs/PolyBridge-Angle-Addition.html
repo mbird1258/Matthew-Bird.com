@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WC7EZ78F0Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WC7EZ78F0Z');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Matthew Bird - Poly Bridge Angle Addition</title>
+    <meta name="description" content="Matthew Bird Portfolio">
+    <meta name="keywords" content="Matthew Bird, About, Portfolio">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/assets/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/blog.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm sticky-top navbar-light" id="navbar">
+    <div class="container-fluid">
+        <a href="/" class="navbar-brand">Matthew Bird</a>
+        
+        <!-- links -->
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-container" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+        <div class="navbar-collapse collapse" id="navbar-container" style>
+        <ul class="navbar-nav ms-auto" id="navbar-links">
+            <li class="nav-item">
+                <a id="home-nav" href="/" class="nav-link theme2">Home</a>
+            </li>
+            
+            <li class="nav-item">
+                <a id="blogs-nav" href="/blogs.html" class="nav-link theme2">Blogs</a>
+            </li>
+
+            <li class="nav-item">
+                <a id="about-nav" href="/about.html" class="nav-link theme2">About</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+
+
+    <!-- Content -->
+    <div class="content col-md-8 offset-md-2 col-12 m-auto">
+        <div class="header">
+            <h1 class="title d-inline">Adding Angles Together in Poly Bridge</h1>
+            <h6 class="tags d-inline">[Planar Linkages]</h6>
+            <h3 class="synopsis">Achieving Basic Addition Using Planar Linkages in Poly Bridge</h3>
+            <h6 class="author d-inline">Matthew Bird</h6>
+            <h6 class="date d-inline">Sat, Jul 12, 2025</h6>
+        </div>
+        <div class="main">
+            <div class="embed-responsive embed-responsive-16by9" style="overflow:hidden;">
+                <iframe class="embed-responsive-item d-inline" src="https://www.youtube.com/embed/8zoABIoGM0Y" style="width:480px; height:270px" allowfullscreen></iframe>
+            </div>
+            <h4>Demo Vid: <a href="https://www.youtube.com/watch?v=8zoABIoGM0Y">https://www.youtube.com/watch?v=8zoABIoGM0Y</a></h4>
+            
+            <h2>What are Planar Linkages</h2>
+            <p>In the context of Poly Bridge, planar linkages are just a set of rigid members/links connected by nodes constrained to a single plane. This can be thought of somewhat similarly to joints and bones in the body, where links/bones are a fixed length and are connected to each other through nodes/joints and can freely pivot around these nodes/joints. However, in Poly Bridge, these joints and nodes don’t collide with each other as it is all constrained to a single 2d plane. </p>
+            <p>This set of constraints interested me, since while it seems like a somewhat trivial problem, the only way I really knew to add angles was through a differential drive, which is a somewhat complex 3d construction of gears rotating around each other to add rotation, and would obviously not work in a 2d plane without collision.</p>
+            
+            <h2>Process</h2>
+            <p>The first step interestingly actually uses the inscribed angle theorem. According to the inscribed angle theorem, angle CDE is double angle CBE. By adding a parallel line to line BE through point D, line DE now rotates at double the speed of line AD. In other words, when we rotate line AD by 0.5 degrees, line DE rotates by 1 degree. However, it is also important to note that DE is effectively a reflection of CD across AD. Thus, if we rotate line BC by -1 degree, line DE rotates by 1 degree. This gives us the ability to rotate DE by rotating either one of two other line segments, AD and BC, which allows us to add their rotations together. Another issue is that line BE is variable in length as E travels along the circle. To fix this, we can use a straight line mechanism such as Hart's A-frame linkage to follow E around the circle. </p>
+            <img class="img-fluid" src="../assets/imgs/PolyBridge Addition/1.png", style="width: 400px">
+            <img class="img-fluid" src="../assets/imgs/PolyBridge Addition/2.gif", style="width: 400px">
+            
+            <p>However, an issue with the current setup is that we are not performing angular addition where A+B=C, but rather 2A-B=C. To fix this, we have to find a way to reduce our input A to 0.5A, and flip B to -B, so that when we feed in our inputs, we get 2(0.5A)-(-B)=C or A+B=C.</p>
+            <p>Reducing A to 0.5A can be done through the same inscribed angle theorem, fixing line BC, treating DE as the input, and taking AD as the output. </p>
+            <img class="img-fluid" src="../assets/imgs/PolyBridge Addition/3.gif">
+            
+            <p>To flip B to -B, however, we need to use a different linkage. By constraining point C to a straight line(orange), when we rotate A, B must rotate in the opposite direction to keep all line segments the same length. However, it is also important to copy this linkage with an angular offset, since when A is on the orange line, the whole linkage will line up and can bind up or start rotating in the same direction instead. </p>
+            <img class="img-fluid" src="../assets/imgs/PolyBridge Addition/4.png", style="width: 400px">
+            <img class="img-fluid" src="../assets/imgs/PolyBridge Addition/5.gif", style="width: 653px">
+            
+            <p>Putting these all together in Poly Bridge gives the following amalgamation, where A is the angle reversing, B is halving the input angle, and C is combining the two with the inscribed angle theorem. While the video shows the output constantly lagging behind what it should be, this is due to the ability for materials in Poly Bridge to stretch and compress slightly, which annoyingly creates a bit of error.</p>
+            <img class="img-fluid" src="../assets/imgs/PolyBridge Addition Thumbnail.png">
+        </div>
+        <div class="footer">
+            <p class="d-inline">Feel free to contact me about anything!</p>
+            <a href="/about.html"><p class="d-inline">Contacts</p></a>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="row fixed-bottom" id="page-footer">
+            <div class="col-md-4 offset-md-4 text-center">
+                
+                <a href="/">© Matthew-Bird.com</a>
+            </div>
+            <div class="col-md-4 text-end">
+                <p>Made by Matthew Bird</p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
