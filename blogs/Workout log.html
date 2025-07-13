@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WC7EZ78F0Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WC7EZ78F0Z');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Matthew Bird - Workout Log</title>
+    <meta name="description" content="Matthew Bird Portfolio">
+    <meta name="keywords" content="Matthew Bird, About, Portfolio">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/assets/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/blog.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm sticky-top navbar-light" id="navbar">
+    <div class="container-fluid">
+        <a href="/" class="navbar-brand">Matthew Bird</a>
+        
+        <!-- links -->
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-container" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+        <div class="navbar-collapse collapse" id="navbar-container" style>
+        <ul class="navbar-nav ms-auto" id="navbar-links">
+            <li class="nav-item">
+                <a id="home-nav" href="/" class="nav-link theme2">Home</a>
+            </li>
+            
+            <li class="nav-item">
+                <a id="blogs-nav" href="/blogs.html" class="nav-link theme2">Blogs</a>
+            </li>
+
+            <li class="nav-item">
+                <a id="about-nav" href="/about.html" class="nav-link theme2">About</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+
+
+    <!-- Content -->
+    <div class="content col-md-8 offset-md-2 col-12 m-auto">
+        <div class="header">
+            <h1 class="title d-inline">Workout Log</h1>
+            <h6 class="tags d-inline">[Productivity]</h6>
+            <h3 class="synopsis">Creating a Workout Log for my Bouldering and Flexibility Goals in Google Sheets</h3>
+            <h6 class="author d-inline">Matthew Bird</h6>
+            <h6 class="date d-inline">Sun, Jul 13, 2025</h6>
+        </div>
+        <div class="main">
+            <img class="img-fluid" src="../assets/imgs/Workout Log Thumbnail.png">
+            <h4>Google Sheets URL: <a href="https://docs.google.com/spreadsheets/d/13sXTPf1_qdOAjoDYG250jAS6ped0E3-2DLasms26N3M/">https://docs.google.com/spreadsheets/d/13sXTPf1_qdOAjoDYG250jAS6ped0E3-2DLasms26N3M/</a>
+            
+            <h2>Premise</h2>
+            <p>I’ve always wanted to workout properly, and ever since I’ve discovered bouldering I’ve finally found my motivation to start. However, since I was overseas and had a lot of freetime and wanted to structure my workouts well, I decided to make my own workout spreadsheet. My only goals were to make it pretty, make it easy to use, and make it easy to update the backend. </p>
+            
+            <h2>How it Works</h2>
+            <p>The functionality of the spreadsheet is spread across a few different sequences that data flows through. (BCY stands for the bouldering, calisthenics, and yoga pages)</p>
+            <p class="multiline">BCY (workouts) -> BCY (catalogue) -> exercise list
+Interface + exercise list -> backend
+Backend + Microcycle -> Macrocycle
+Graph (inputs) + backend -> Backend2 -> Graph (chart)</p>
+            <p>The first sequence conglomerates each exercise and its corresponding data into one exercise list. The main functions used in this sequence are written in google apps script. One combines multiple tables together from a set of ranges, while the other returns the header of a table from the exercise name. It’s important to note that the catalogue stores the data on which muscle groups and exercise types correspond to a set exercise, so both the catalogue and the workouts below need to be updated with each exercise. </p>
+            <p>The second sequence starts with the interface, which references the appropriate exercise and its data from the exercise list and updates the backend. This is also done in google apps script, and works by checking for updates in the submit checkbox, and when an update is found it clears the interface and moves the data into a new row in the backend tab. A little quality of life feature I added was automatically using the user’s last bodyweight as the weight if none is filled in, which makes inputting bodyweight exercises smoother. The sets value also defaults to the value in the exercise list page if left blank.</p>
+            <p>The interface page uses checkboxes instead of buttons because I had trouble using them on my phone, and that’s the main way I use the spreadsheet. The update backend button simply forcefully updates the entire first sequence, since google sheets doesn’t automatically do so and it is often broken when first loading the spreadsheet. Lastly, the Update bodyweight button prompts the user for their weight and adds a new row to the BackendWeight page. </p>
+            <p>The third sequence uses the backend and microcycle as data for the macrocycle. The microcycle is just used to tell how many sessions of bouldering/calisthenics/yoga are needed to turn the corresponding cell green. Rows 5-9 of the macrocycle page are dedicated to splitting the page into a year month date format. It works by having a row of dates representing each sunday. From this, it can find the year or month of each week. Something to note is that it only displays the year if it is the first week of the year, so that only one 2025 is shown instead of one for each week. The same is true for months. However, this created another issue where the year cell could not spill over into neighbouring cells to display the full year because, although the neighbouring cells were blank, they still contained a formula and couldn’t be overflowed into. To fix this, I replaced the formulas with a single arrayformula, which would leave the blank cells truly empty as the formula was in the single cell containing the arrayformula instead of the empty cell itself. </p>
+            <p>The cells to calculate the data on the macrocycle were hell to code, and it would be needlessly complex to explain each one, but if you’re interested, you can open the spreadsheet and try to understand them for yourself.</p>
+            <h5>Where do I even start :(</h5>
+            <img class="img-fluid" src="../assets/imgs/Workout Log/1.png">
+            <p>The last sequence starts with the graph page referencing the appropriate exercise from the backend and updating the values in backend2, where the data is formatted in a way that google sheets can graph using a pivot table, and finally is graphed in the graph page.</p>
+            
+            <h2>How to Use</h2>
+            <h3>Changing the Exercises</h3>
+            <p>To change an exercise, you go to the corresponding page(ex. calisthenics) and edit the workouts by adding exercises and their corresponding sets. This will then update the catalogue, though the muscle groups and exercise types need to be manually selected afterwards in the catalogue. To add more workouts than the three given, you can add more ranges to the ranges list on the right of the catalogue. </p>
+            
+            <h3>Adding Entries to the Interface</h3>
+            <p>This is done by simply selecting the category and exercise from the drop down lists, filling in the sets, reps, and weight (sets and weight are optional, defaulting to the sets value in the exercise list and your last bodyweight if left blank), and pressing submit. Sometimes on the phone, pressing the submit button doesn’t work on the first try, as with some of the other buttons, so it may be necessary to uncheck and recheck it again. (Though give it some time, the functions take a while because of how apps script works)</p>
+            
+            <h3>Changing the Microcycle</h3>
+            <p>A cell automatically turns blue and gets counted if you type anything inside, and goes blank and removed from the count if you delete what’s inside. </p>
+            
+            <h2>Conclusion</h2>
+            <p>Honestly, I’m quite happy with how it turned out, since it looks nice and is easy to use, but there’s also plenty of ways it could be improved. It struggles when the same exercise is put in multiple different workouts, the metrics it uses in the macrocycle page are not the most well calculated, the backend breaks almost every time the spreadsheet is loaded, the update backend button takes ten years to run, changing the exercises requires shifting all of the exercise type and muscle group data around, and more. Regardless, I’m quite lazy but I still use it without much self-control, so I’m happy with it. </p>
+            
+        </div>
+        <div class="footer">
+            <p class="d-inline">Feel free to contact me about anything!</p>
+            <a href="/about.html"><p class="d-inline">Contacts</p></a>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="row fixed-bottom" id="page-footer">
+            <div class="col-md-4 offset-md-4 text-center">
+                
+                <a href="/">© Matthew-Bird.com</a>
+            </div>
+            <div class="col-md-4 text-end">
+                <p>Made by Matthew Bird</p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
