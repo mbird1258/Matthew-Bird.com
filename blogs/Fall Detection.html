@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WC7EZ78F0Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WC7EZ78F0Z');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Matthew Bird - Fall Detection</title>
+    <meta name="description" content="Matthew Bird Portfolio">
+    <meta name="keywords" content="Matthew Bird, About, Portfolio">
+    
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/assets/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/blog.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm sticky-top navbar-light" id="navbar">
+    <div class="container-fluid">
+        <a href="/" class="navbar-brand">Matthew Bird</a>
+        
+        <!-- links -->
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-container" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+        <div class="navbar-collapse collapse" id="navbar-container" style>
+        <ul class="navbar-nav ms-auto" id="navbar-links">
+            <li class="nav-item">
+                <a id="home-nav" href="/" class="nav-link theme2">Home</a>
+            </li>
+            
+            <li class="nav-item">
+                <a id="blogs-nav" href="/blogs.html" class="nav-link theme2">Blogs</a>
+            </li>
+
+            <li class="nav-item">
+                <a id="about-nav" href="/about.html" class="nav-link theme2">About</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+
+
+    <!-- Content -->
+    <div class="content col-md-8 offset-md-2 col-12 m-auto">
+        <div class="header">
+            <h1 class="title d-inline">Fall Detection</h1>
+            <h6 class="tags d-inline">[Computer Vision]</h6>
+            <h3 class="synopsis">Basic Fall Detection Built From Scratch in Python</h3>
+            <h6 class="author d-inline">Matthew Bird</h6>
+            <h6 class="date d-inline">Tue, Jul 22, 2025</h6>
+        </div>
+        <div class="main">
+            <h4>Github Repository: <a href="https://github.com/mbird1258/Fall-Detection">https://github.com/mbird1258/Fall-Detection</a></h4>
+            
+            <h2>Motivation</h2>
+            <p>Falls are the most common cause of injury to elderly, and thus I thought it would be neat to use cheap ESP32 Cameras to detect falls. Although I never got around to testing with an ESP32, the code still worked on videos I tested from online.</p>
+            <h2>Method</h2>
+            <p>The first step is to make use of my hip space to 3D space calibration documented <a href="https://matthew-bird.com/blogs/Hip-to-Camera-Space.html">here</a> to allow me to use the faster <a href="https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker">mediapipe pose detection model</a> to get the 3D body joint positions around the camera as the origin.</p>
+            <p>The next step is to match the bodies detected in each frame to each other. This is done by calculating the relative velocity between each existing body and each body detected in the current frame in a matrix of shape (# bodies 1, # bodies 2), and then taking the minimum value in the matrix to match 2 bodies, repeating until all the bodies are matched. If the velocity threshold is exceeded, which would happen in case one person walks off screen to the right and another appears on screen to the left, it would define the body detected in the current frame as a new body instead of matching it.</p>
+            <p>The last step is to use the change in velocity between each of the joints of a body to calculate the acceleration each joint underwent in the last frame, and if the acceleration of any joint was exceeded, report an incident and save a video of the incident.</p>
+            <p>The code itself can be used on any camera as a result of its automatic calibration of the camera view depth, though at the same time it’s important to have a clear view of a person to calibrate the camera with at the start of the video. The code also prints the camera view depth so it can be inputted as a parameter to the code when run using the same camera in the future, reducing overhead runtime on startup substantially.</p>
+            <h2>Setup</h2>
+            <p class="multiline">1. Download pose landmarker <a href="https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker/python">here</a> and rename to pose_landmarker.task
+2. Download model <a href="https://bit.ly/metrabs_l">here</a> and rename folder to model
+3. Download .mp4 files to the In directory
+4. Run example.ipynb</p>
+        </div>
+        <div class="footer">
+            <p class="d-inline">Feel free to contact me about anything!</p>
+            <a href="/about.html"><p class="d-inline">Contacts</p></a>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="row fixed-bottom" id="page-footer">
+            <div class="col-md-4 offset-md-4 text-center">
+                
+                <a href="/">© Matthew-Bird.com</a>
+            </div>
+            <div class="col-md-4 text-end">
+                <p>Made by Matthew Bird</p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
